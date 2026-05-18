@@ -148,6 +148,7 @@ nav.scrolled {
 .haus-intro-facts {
   list-style: none;
   margin-bottom: 48px;
+  color: rgba(var(--haus-farbe), 1);
 }
 .haus-intro-facts li {
   padding: 14px 0;
@@ -358,7 +359,7 @@ section { padding: 90px 48px; }
   text-transform: uppercase;
   line-height: 1;
   position: sticky;
-  top: 80px;
+  top: 110px;
 }
 .mietflaechen-spalte {
   display: flex;

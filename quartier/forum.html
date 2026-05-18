@@ -14,12 +14,12 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="../ehem-kohlenhofareal-gromühl.html" class="nav-logo">
+  <a href="../index.html" class="nav-logo">
     <div class="logo-mark"></div>
     <div class="logo-text">EHEM.<br>KOHLENHOF<br>GROMBÜHL</div>
   </a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="../ehem-kohlenhofareal-grombühl.html">Startseite</a></li>
+    <li><a href="../index.html">Startseite</a></li>
     <li class="dropdown">
       <a href="../quartier.html">QUARTIER ▾</a>
       <div class="dropdown-menu">
@@ -49,19 +49,19 @@
   </div>
   <div class="haus-intro-right">
     <div>
-      <p class="haus-intro-desc">Beschreibung Frame.</p>
+      <p class="haus-intro-desc">Beschreibung Forum.</p>
       <ul class="haus-intro-facts">
         <li><strong>Anzahl der Geschosse:</strong> 4 </li>
         <li><strong>Mietfläche gesamt:</strong> 4025 qm</li>
         <li><strong>Größe pro Etage:</strong> 565-1420 qm</li>
-        <li><strong>Nutzung:</strong> Gewerbe<br>OGs:Boarding House</li>
+        <li><strong>Nutzung: </strong>EG: Gewerbe<br>OGs: Boarding House</li>
       </ul>
     </div>
     <div class="haus-intro-links">
-      <a href="#" class="haus-intro-link">
+      <a href="#mietflaechen-gewerbe" class="haus-intro-link">
         zu den Mietflächen Gewerbe <span class="haus-intro-link-arrow">———→</span>
       </a>
-      <a href="#" class="haus-intro-link">
+      <a href="#zimmer-boarding-house" class="haus-intro-link">
         zu den Zimmern Boarding House <span class="haus-intro-link-arrow">———→</span>
       </a>
     </div>
@@ -150,64 +150,127 @@
   }, 4000);
 </script>
 
-<!-- MIETFLÄCHEN -->
-<section id="mietflaechen" class="flaechen-section">
-  <div class="section-label">Verfügbare Einheiten</div>
-  <h2 class="section-title">Mietflächen</h2>
-  <p style="color:#555;font-weight:300;max-width:600px;line-height:1.7;margin-bottom:8px">Alle Flächen auf einen Blick. Freie Einheiten können direkt angefragt werden – bei reservierten Flächen gerne auf die Warteliste setzen lassen.</p>
-  <div class="flaechen-grid">
-    
-    <div class="fl-card fade-up">
-      <div class="fl-card-num">E.01</div>
-      <span class="fl-badge available">Verfügbar</span>
-      <div class="fl-row"><span class="fl-key">Stockwerk</span><span class="fl-val">EG</span></div>
-      <div class="fl-row"><span class="fl-key">Mietfläche</span><span class="fl-val">420,00 m²</span></div>
-      <div class="fl-row fl-total"><span class="fl-key">Gesamt inkl. Gem.</span><span class="fl-val"><span>482,00 m²</span></span></div>
-      <div class="fl-nutzung">Kursraum, Werkstatt</div>
-      <a href="#kontakt" class="fl-action anfragen" data-flaeche="E.01">anfragen →</a>
+
+<!-- ─── MIETFLÄCHEN ─── -->
+<div class="mietflaechen" id="mietflaechen-gewerbe">
+  <div class="mietflaechen-titel">Miet-<br>flächen<br>Gewerbe</div>
+
+  <!-- Spalte Mitte -->
+  <div class="mietflaechen-spalte">
+
+    <div class="mf-card">
+      <h3>E.0.01</h3>
+      <ul class="mf-info">
+        <li>Stockwerk: EG</li>
+        <li>Mietfläche: xxx,xx m²</li>
+        <li>Gemeinschaftsfläche Geschoss anteilig: xx,xx m²</li>
+        <li>Gemeinschaftsfläche Gebäude anteilig: xx,xx m²</li>
+        <li><strong>Gesamt: xxx,xx m²</strong></li>
+        <li>Nutzung: xx</li>
+      </ul>
+      <a href="../kontakt.html" class="mf-anfragen">anfragen ↗</a>
     </div>
 
-    <div class="fl-card reserved fade-up">
-      <div class="fl-card-num">E.02</div>
-      <span class="fl-badge reserved">Reserviert</span>
-      <div class="fl-row"><span class="fl-key">Stockwerk</span><span class="fl-val">EG</span></div>
-      <div class="fl-row"><span class="fl-key">Mietfläche</span><span class="fl-val">210,00 m²</span></div>
-      <div class="fl-row fl-total"><span class="fl-key">Gesamt inkl. Gem.</span><span class="fl-val"><span>241,00 m²</span></span></div>
-      <div class="fl-nutzung">Labor, Studio</div>
-      <span class="fl-action reserviert">reserviert</span>
+    <!-- Grundriss Bild -->
+    <div class="mf-grundriss-img">
+      <div class="mf-grundriss-placeholder">Grundriss / Eigenes Bild einfügen</div>
+      <p class="mf-grundriss-caption">Forum Beispielfläche Gewerbe</p>
     </div>
 
-    <div class="fl-card reserved fade-up">
-      <div class="fl-card-num">E.03</div>
-      <span class="fl-badge reserved">Reserviert</span>
-      <div class="fl-row"><span class="fl-key">Stockwerk</span><span class="fl-val">1. OG</span></div>
-      <div class="fl-row"><span class="fl-key">Mietfläche</span><span class="fl-val">840,00 m²</span></div>
-      <div class="fl-row fl-total"><span class="fl-key">Gesamt inkl. Gem.</span><span class="fl-val"><span>964,60 m²</span></span></div>
-      <div class="fl-nutzung">Seminarräume</div>
-      <span class="fl-action reserviert">reserviert</span>
-    </div>
-
-    <div class="fl-card fade-up">
-      <div class="fl-card-num">E.04</div>
-      <span class="fl-badge available">Verfügbar</span>
-      <div class="fl-row"><span class="fl-key">Stockwerk</span><span class="fl-val">2. OG</span></div>
-      <div class="fl-row"><span class="fl-key">Mietfläche</span><span class="fl-val">960,00 m²</span></div>
-      <div class="fl-row fl-total"><span class="fl-key">Gesamt inkl. Gem.</span><span class="fl-val"><span>1102,40 m²</span></span></div>
-      <div class="fl-nutzung">Großer Seminarraum, Büro</div>
-      <a href="#kontakt" class="fl-action anfragen" data-flaeche="E.04">anfragen →</a>
-    </div>
-
-    <div class="fl-card fade-up">
-      <div class="fl-card-num">E.05</div>
-      <span class="fl-badge available">Verfügbar</span>
-      <div class="fl-row"><span class="fl-key">Stockwerk</span><span class="fl-val">3. OG</span></div>
-      <div class="fl-row"><span class="fl-key">Mietfläche</span><span class="fl-val">620,00 m²</span></div>
-      <div class="fl-row fl-total"><span class="fl-key">Gesamt inkl. Gem.</span><span class="fl-val"><span>712,00 m²</span></span></div>
-      <div class="fl-nutzung">Büro, Bibliothek</div>
-      <a href="#kontakt" class="fl-action anfragen" data-flaeche="E.05">anfragen →</a>
-    </div>
   </div>
-</section>
+
+  <!-- Spalte Rechts -->
+  <div class="mietflaechen-spalte">
+
+  </div>
+</div>
+
+<!-- ─── MIETFLÄCHEN ─── -->
+<div class="mietflaechen" id="zimmer-boarding-house">
+  <div class="mietflaechen-titel">Zimmer<br>Boarding<br>House</div>
+
+  <!-- Spalte Mitte -->
+  <div class="mietflaechen-spalte">
+
+    <div class="mf-card">
+      <h3>E.0.02</h3>
+      <ul class="mf-info">
+        <li>Stockwerk: EG</li>
+        <li>Mietfläche: xxx,xx m²</li>
+        <li>Gemeinschaftsfläche Geschoss anteilig: xx,xx m²</li>
+        <li>Gemeinschaftsfläche Gebäude anteilig: xx,xx m²</li>
+        <li><strong>Gesamt: xxx,xx m²</strong></li>
+        <li>Nutzung: xx</li>
+      </ul>
+      <a href="../kontakt.html" class="mf-anfragen">anfragen ↗</a>
+    </div>
+
+    <div class="mf-card">
+      <h3>E.2.01</h3>
+      <ul class="mf-info">
+        <li>Stockwerk: 2.OG</li>
+        <li>Mietfläche: xxx,xx m²</li>
+        <li>Gemeinschaftsfläche Geschoss anteilig: xx,xx m²</li>
+        <li>Gemeinschaftsfläche Gebäude anteilig: xx,xx m²</li>
+        <li><strong>Gesamt: xxx,xx m²</strong></li>
+        <li>Nutzung: xx</li>
+      </ul>
+      <a href="../kontakt.html" class="mf-anfragen">anfragen ↗</a>
+    </div>
+
+    <div class="mf-card">
+      <h3>E.4.01</h3>
+      <ul class="mf-info">
+        <li>Stockwerk: 4.OG</li>
+        <li>Mietfläche: xxx,xx m²</li>
+        <li>Gemeinschaftsfläche Geschoss anteilig: xx,xx m²</li>
+        <li>Gemeinschaftsfläche Gebäude anteilig: xx,xx m²</li>
+        <li><strong>Gesamt: xxx,xx m²</strong></li>
+        <li>Nutzung: xx</li>
+      </ul>
+      <a href="../kontakt.html" class="mf-anfragen">anfragen ↗</a>
+    </div>
+
+    <!-- Grundriss Bild -->
+    <div class="mf-grundriss-img">
+      <div class="mf-grundriss-placeholder">Grundriss / Eigenes Bild einfügen</div>
+      <p class="mf-grundriss-caption">Forum Beispielfläche Gewerbe</p>
+    </div>
+
+  </div>
+
+  <!-- Spalte Rechts -->
+  <div class="mietflaechen-spalte">
+
+    <div class="mf-card">
+      <h3>E.1.01</h3>
+      <ul class="mf-info">
+        <li>Stockwerk: 1.OG</li>
+        <li>Mietfläche: xxx,xx m²</li>
+        <li>Gemeinschaftsfläche Geschoss anteilig: xx,xx m²</li>
+        <li>Gemeinschaftsfläche Gebäude anteilig: xx,xx m²</li>
+        <li><strong>Gesamt: xxx,xx m²</strong></li>
+        <li>Nutzung: xx</li>
+      </ul>
+      <a href="../kontakt.html" class="mf-anfragen">anfragen ↗</a>
+    </div>
+
+    <div class="mf-card">
+      <h3>E.3.01</h3>
+      <ul class="mf-info">
+        <li>Stockwerk: 3.OG</li>
+        <li>Mietfläche: xxx,xx m²</li>
+        <li>Gemeinschaftsfläche Geschoss anteilig: xx,xx m²</li>
+        <li>Gemeinschaftsfläche Gebäude anteilig: xx,xx m²</li>
+        <li><strong>Gesamt: xxx,xx m²</strong></li>
+        <li>Nutzung: xx</li>
+      </ul>
+      <a href="../kontakt.html" class="mf-anfragen">anfragen ↗</a>
+    </div>
+
+  </div>
+</div>
+
 
 <!-- AUSSTATTUNG -->
 <section id="ausstattung" class="ausstattung-section">
