@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ehem. Kohlenhofareal Grombühl</title>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gelb: 244, 210, 66;
+      --rot: 196, 95, 63;
+      --lachs: 255, 192, 192;
+      --rosa: 242, 156, 195;
+      --lila: 207, 203, 232;
+      --blau: 128, 176, 232;
+      --grün1: 137, 142, 70;
+      --grün2: 214, 211, 95;
+      --türkis: 0, 132, 113;
+      --white: #FFFFFF;
+      --off-white: #F5F3EE;
+      --dark: #1a1a1a;
+      --gray: #888;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--off-white);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 48px;
+      background: transparent;
+      transition: background .3s;
+    }
+    nav.scrolled { 
+      background: rgba(255,255,255,.50); backdrop-filter: blur(14px); 
+    }
+    .nav-logo { 
+      display: flex; align-items: center; gap: 10px; text-decoration: none; 
+    }
+    .logo-mark { 
+      width: 34px; height: 34px; background: rgba(var(--grün2), 1); border-radius: 50%; flex-shrink: 0; 
+    }
+    .logo-text {
+      font-family: 'Archivo Black', sans-serif; font-size: 1rem;
+      color: rgba(var(--grün2), 1); letter-spacing: .07em; line-height: 1.15;
+    }
+    .nav-links { 
+      display: flex; gap: 32px; list-style: none; align-items: center; 
+    }
+    .nav-links a {
+      color: rgba(var(--grün2), 1); text-decoration: none;
+      font-size: 1rem; font-weight: 400; letter-spacing: .06em;
+      text-transform: uppercase; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
+      height: 1px; background: rgba(var(--grün2), 1);
+      transform: scaleX(0); transition: transform .25s;
+    }
+    .nav-links a:hover::after { 
+      transform: scaleX(1); 
+    }
+    .dropdown { 
+      position: relative; 
+    }
+    .dropdown-menu {
+      display: none; position: absolute; top: 160%; left: 0;
+      background: rgba(var(--rosa), 1); min-width: 170px;
+    }
+    .dropdown-menu::before {
+      content: '';
+      position: absolute;
+      top: -20px;        
+      left: 0; right: 0;
+      height: 20px;      
+      background: transparent;
+    }
+    .dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu a {
+      display: block; padding: 8px 18px; font-size: 1rem;
+      text-transform: none; letter-spacing: 0; color: rgba(var(--grün2), 1);
+    }
+    .dropdown-menu a::after { display: none; 
+    }
+    .dropdown-menu a:hover { background: rgba(var(--grün2), 1); color: rgba(var(--rosa), 1); text-decoration: underline; 
+    }
+    .nav-cta {
+      background: var(--white) !important; color: var(--white) !important;
+      padding: 10px 22px !important;
+    }
+    .nav-cta::after { 
+      display: none !important; 
+    }
+    .nav-cta:hover { 
+      background: #c9461a !important; 
+    }
+    .hamburger { 
+      display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; 
+    }
+    .hamburger span { 
+      width: 26px; height: 2px; background: var(--white); display: block; transition: .3s; 
+    }
+
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; height: 100vh; min-height: 620px;
+      display: flex; flex-direction: column;
+      justify-content: flex-end; padding: 0 0 80px 48px;
+      background: linear-gradient(155deg, rgba(var(--rosa), 1) 0%, var(--purple) 45%, #2d0f50 100%);
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      position: absolute; inset: 0; opacity: .05;
+      background-image:
+        repeating-linear-gradient(0deg, white 0, white 1px, transparent 1px, transparent 64px),
+        repeating-linear-gradient(90deg, white 0, white 1px, transparent 1px, transparent 64px);
+    }
+
+
+    /* scrolling ticker rows */
+    .hero-ticker {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; justify-content: space-around;
+      pointer-events: none; overflow: hidden;
+    }
+    .ticker-row { overflow: hidden; padding: 0; }
+    .ticker-inner {
+      display: inline-flex; gap: 80px; white-space: nowrap;
+      animation: tickerL 30s linear infinite;
+    }
+    .ticker-row:nth-child(even) .ticker-inner { animation-name: tickerR; }
+    .ticker-item {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      color: rgba(255,255,255,.045);
+      letter-spacing: .02em; flex-shrink: 0;
+    }
+    @keyframes tickerL { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes tickerR { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+    .hero-content { position: relative; z-index: 2; }
+    .hero-overline {
+      font-size: .7rem; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--orange); margin-bottom: 16px; font-weight: 500;
+    }
+    .hero-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(3.8rem, 7.5vw, 6.5rem);
+      color: rgb(var(--grün2), 1); line-height: .92; margin-bottom: 28px;
+    }
+
+
+    /* ── SLIDESHOW ── */
+    .slideshow {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transform: translateX(100%);
+      transition: transform .8s ease-in-out;
+    }
+    .slide.active {
+      transform: translateX(0%);
+    }
+    .slide.exit {
+      transform: translateX(-100%);
+    }
+
+    /* Bilder – trage deine Bildpfade ein */
+    .slide-1 {background-image: url('bilder/Ausblick_Platz vorher.jpeg'); }
+    .slide-2 {background-image: url('bilder/Ausblick_Platz nachher.jpg'); }
+    .slide-3 {background-image: url('bilder/Ausblick_Straße vorher.jpeg'); }
+    .slide-4 { background-image: url('bilder/Ausblick_Straße nachher.jpg'); }
+
+    /* Abdunklung damit der Titel lesbar bleibt */
+    .slideshow::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, .35);
+      z-index: 1;
+    }
+
+
+    /* ── STRIP ── */
+    .cta-banner-box {
+      background: rgba(var(--rosa), 1);
+      border: 2px solid rgba(var(--grün2), 1); 
+      border-radius: 30px;
+      margin: 40px 48px;
+      padding: 36px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      cursor: pointer;
+      transition: background .2s;
+      text-decoration: none;
+    }
+    .cta-banner-box h2 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 3.0rem);
+      color: rgba(var(--grün2), 1);
+      line-height: 1;
+      letter-spacing: .02em;
+    }
+    .cta-banner-arrow {
+      color: rgba(var(--grün2), 1);
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+    .cta-wrapper {
+      background-color: rgba(var(--rosa), 0.40);
+      padding: 10px 0;
+      transition: background-color .2s;
+    }
+    .cta-wrapper:hover {
+      background-color: rgba(var(--rosa), 1);
+    }
+
+
+    /* ── SHARED SECTION STYLES ── */
+    section { padding: 100px 48px; }
+    .section-label {
+      font-size: .68rem; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--orange); font-weight: 500; margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.6rem, 5vw, 4.2rem); line-height: .97;
+    }
+
+
+    /* ── MOSAIK ── */
+    .mosaik {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      aspect-ratio: 3/3;
+    }
+    .mosaik-zelle {
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      padding: 28px;
+    }
+   .mosaik-zelle img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .mosaik-text {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(1.4rem, 2.8vw, 3rem);
+      line-height: 1.0;
+      letter-spacing: .01em;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+   }
+
+    /* Zelle 1: links oben */
+    .mosaik-z1 {
+      background: rgba(var(--grün2), 1);
+      align-items: flex-start;
+    }
+    .mosaik-z1 .mosaik-text { color: rgba(var(--rosa), 1); }
+
+    /* Zelle 2: Foto oben mittig */
+    .mosaik-z2 {
+      padding: 0;
+    }
+
+    /* Zelle 3: rechts oben */
+    .mosaik-z3 {
+      background: rgba(var(--grün2), 1);
+      align-items: flex-start;
+    }
+    .mosaik-z3 .mosaik-text { color: rgba(var(--rosa), 1); }
+
+    /* Zelle 4: Foto unten links */
+    .mosaik-z4 {
+      padding: 0;
+    }
+   
+    /* Zelle 5: groß zentriert */
+    .mosaik-z5 {
+      background: rgba(var(--rosa), 1);
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .mosaik-z5 .mosaik-text {
+      color: rgba(var(--grün2), 1);
+      font-size: clamp(2rem, 4vw, 4.5rem);
+    }
+
+    /* Zelle 6: Foto unten rechts */
+    .mosaik-z6 {
+      padding: 0;
+    }
+
+    @media (max-width: 700px) {
+      .mosaik {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, 1fr);
+        aspect-ratio: auto;
+      }
+    }
+
+ 
+    /* ── NEWS ── */
+    .news-section {
+      background-color: rgba(var(--rosa), 0.40);
+      padding: 60px 28px;
+      transition: none
+    }
+    .news-section h2 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(3rem, 6vw, 5rem);
+      color: rgba(var(--rosa), 1);
+      display: inline-block;
+      padding: 0 8px;
+      margin-bottom: 48px;
+      line-height: 1;
+    }
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .news-card {
+      background: rgba(var(--rosa), 1);
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: border-color .2s;
+    }
+    .news-card-img {
+      position: relative;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: #aaa;
+    }
+    .news-card-img img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .news-badge {
+      position: absolute;
+      top: 14px; right: 14px;
+      background: rgba(var(--grün2), 1);
+      color: rgb(var(--rosa), 1);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .75rem; letter-spacing: .12em;
+      padding: 4px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+    .news-card-body {
+      padding: 24px 22px 28px;
+      display: flex; flex-direction: column; flex: 1;
+    }
+    .news-card-body h3 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      color: rgba(var(--grün2), 1);
+      line-height: 1.05;
+      margin-bottom: auto;
+      padding-bottom: 24px;
+    }
+    .news-card-body:hover h3 { 
+      text-decoration: underline; 
+    }
+    .news-mehr {
+      display: inline-block;
+      background: rgba(var(--grün2), 1);
+      color: rgba(var(--rosa), 1);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .85rem; letter-spacing: .1em;
+      padding: 8px 18px;
+      text-decoration: none;
+      align-self: flex-start;
+      transition: background .2s, color .2s;
+    }
+    .news-mehr:hover { 
+      text-decoration: underline; 
+    }
+
+    @media (max-width: 900px) {
+    .news-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+    .news-grid { grid-template-columns: 1fr; }
+    }
+
+
+    /* ── INSTAGRAM ── */
+    .instagram-section {
+      background-color: rgba(var(--grün2), 1);
+      padding: 60px 48px;
+    }
+    .instagram-section h2 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      color: rgba(var(--rosa), 1);
+      line-height: .95;
+      margin-bottom: 48px;
+    }
+    .ig-new-grid {
+      display: grid;
+      grid-template-columns: 1fr repeat(4, 1fr);
+      grid-template-rows: auto auto;
+      gap: 8px;
+      max-width: 900px;
+      margin-left: auto;
+    }
+    .ig-new-item {
+      aspect-ratio: 1;
+      background: #e0dcd5;
+      overflow: hidden;
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .65rem; letter-spacing: .1em;
+      text-transform: uppercase; color: #aaa;
+      cursor: pointer;
+    }
+    .ig-new-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      position: absolute; inset: 0;
+    }
+    /* erste Spalte leer / kein Element = grid füllt ab Spalte 2 */
+    .ig-new-item:first-child { grid-column: 2; }
+
+    .ig-new-footer {
+      display: flex; gap: 12px;
+      justify-content: center;
+      margin-top: 32px;
+      max-width: 900px;
+      margin-left: auto;
+    }
+    .ig-new-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 24px;
+      background: rgba(var(--rosa), 1);
+      color: rgba(var(--grün2), 1);
+      font-size: .8rem; letter-spacing: .06em;
+      text-decoration: none; text-transform: none;
+      transition: background .2s, color .2s;
+    }
+    .ig-new-btn:hover {
+      background: rgba(var(--rosa), 0.75);
+    }
+ 
+    @media (max-width: 900px) {
+      .ig-new-grid { grid-template-columns: repeat(2, 1fr); max-width: 100%; margin-left: 0; }
+      .ig-new-item:first-child { grid-column: 1; }
+      .ig-new-footer { margin-left: 0; justify-content: flex-start; }
+    }
+    @media (max-width: 600px) {
+      .ig-new-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── FOOTER NEU ── */
+    .footer-neu {
+      background-color: rgba(var(--rosa), 1);
+      padding: 80px 48px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-height: 100vh;
+      justify-content: space-between;
+    }
+    .footer-neu-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      margin-bottom: 60px;
+    }
+    .footer-neu-logo .logo-mark {
+      width: 52px;
+      height: 52px;
+      background: rgba(var(--grün2), 1);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .footer-neu-logo .logo-text {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.1rem;
+      color: var(--white);
+      letter-spacing: .07em;
+      line-height: 1.15;
+      text-align: left;
+    }
+    .footer-neu-nav {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: auto;
+    }
+    .footer-neu-nav a {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: .02em;
+      transition: color .2s;
+    }
+    .footer-neu-nav a:hover {
+      color: rgba(var(--grün2), 1);
+      text-decoration: underline;
+    }
+    .footer-neu-legal {
+      display: flex;
+      gap: 32px;
+      margin-top: 60px;
+    }
+    .footer-neu-legal a {
+      color: rgba(255,255,255,.6);
+      text-decoration: none;
+      font-size: .9rem;
+      transition: color .2s;
+    }
+    .footer-neu-legal a:hover {
+      color: var(--white);
+    }
+
+    @media (max-width: 600px) {
+      .footer-neu { padding: 60px 24px 40px; }
+      .footer-neu-nav a { font-size: 1.8rem; }
+    }
+
+
+    /* ── FADE UP ── */
+    .fade-up {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fd1 { transition-delay: .1s; }
+    .fd2 { transition-delay: .2s; }
+    .fd3 { transition-delay: .3s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 70px 24px; }
+      .ueber { grid-template-columns: 1fr; gap: 36px; }
+      .haeuser-grid { grid-template-columns: 1fr 1fr; }
+      .haus-card:first-child { grid-column: span 2; }
+      .news-grid { grid-template-columns: 1fr 1fr; }
+      .cta-banner { flex-direction: column; gap: 40px; text-align: left; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .hero { padding: 0 24px 60px; }
+      .hero-badge { display: none; }
+      .hero-scroll { display: none; }
+    }
+    @media (max-width: 600px) {
+      .news-grid { grid-template-columns: 1fr; }
+      .ig-grid { grid-template-columns: repeat(2,1fr); }
+      .haeuser-grid { grid-template-columns: 1fr; }
+      .haus-card:first-child { grid-column: span 1; }
+      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+      .ueber-stats { flex-wrap: wrap; gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav id="navbar">
+  <a href="ehem-kohlenhofareal-grombühl.html" class="nav-logo">
+    <div class="logo-mark"></div>
+    <div class="logo-text">EHEM.<br>KOHLENHOF<br>GROMBÜHL</div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="ehem-kohlenhofareal-gromühl.html">STARTSEITE</a></li>
+    <li class="dropdown">
+      <a href="quartier.html">QUARTIER ▾</a>
+      <div class="dropdown-menu">
+        <a href="quartier/frame.html">FRAME</a>
+        <a href="quartier/pulse.html">PULSE</a>
+        <a href="quartier/leuchtturm.html">LEUCHTTURM</a>
+        <a href="quartier/deck.html">DECK</a>
+        <a href="quartier/forum.html">FORUM</a>
+      </div>
+    </li>
+    <li><a href="kontakt.html">KONTAKT</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+
+<!-- ─── HERO ─── -->
+<div class="slideshow">
+  <div class="slide slide-1 active"></div>
+  <div class="slide slide-2"></div>
+  <div class="slide slide-3"></div>
+  <div class="slide slide-4"></div>
+</div>
+<div class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">DAS QUARTIER<br>FÜR VIELFÄLTIGE<br>NUTZUNGEN</h1>
+  </div>
+</div>
+
+
+<!-- ─── STRIP ─── -->
+<div class="cta-wrapper">
+<a href="kontakt.html" class="cta-banner-box">
+  <h2>5 HÄUSER. UNZÄHLIGE MÖGLICHKEITEN.<br>JETZT FREIE FLÄCHEN SICHERN!</h2>
+  <span class="cta-banner-arrow">→</span>
+</a>
+</div>
+
+
+<!-- ─── MOSAIK ─── -->
+<div class="mosaik">
+
+  <!-- Zeile 1 -->
+  <div class="mosaik-zelle mosaik-z1">
+    <div class="mosaik-text">
+      Für<br>Ideen<br>ohne<br>Grenzen<br><br>
+      Für<br>Ideen<br>ohne<br>Grenzen<br><br>
+      Für<br>Ideen<br>ohne<br>Grenzen
+    </div>
+  </div>
+
+  <div class="mosaik-zelle mosaik-z2">
+    <img src="bilder/foto1.jpg" alt="Eigenes Bild einfügen" />
+  </div>
+
+  <div class="mosaik-zelle mosaik-z3">
+    <div class="mosaik-text">
+      Für<br>Kreative<br>Köpfe<br><br>
+      Für<br>Kreative<br>Köpfe<br><br>
+      Für<br>Kreative<br>Köpfe
+    </div>
+  </div>
+
+  <!-- Zeile 2 -->
+  <div class="mosaik-zelle mosaik-z4">
+    <img src="bilder/foto2.jpg" alt="Eigenes Bild einfügen" />
+    <div class="mosaik-text" style="position:absolute; bottom:28px; left:28px; color:rgba(var(--grün2),1);">
+      Für<br>ein<br>auf<br>Augen-<br>höhe
+    </div>
+  </div>
+
+  <div class="mosaik-zelle mosaik-z5">
+    <div class="mosaik-text">
+      Für<br>Kreative<br>Freiheit
+    </div>
+  </div>
+
+  <div class="mosaik-zelle mosaik-z6">
+    <img src="bilder/foto3.jpg" alt="Eigenes Bild einfügen" />
+  </div>
+
+</div>
+
+
+<!-- ─── NEWS ─── -->
+<div class="news-section">
+  <h2>News</h2>
+  <div class="news-grid">
+
+    <div class="news-card">
+      <div class="news-card-img">
+        Eigenes Bild einfügen
+        <span class="news-badge">News</span>
+      </div>
+      <div class="news-card-body">
+        <h3>News 3!</h3>
+        <a href="#" class="news-mehr">Mehr »</a>
+      </div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-card-img">
+        Eigenes Bild einfügen
+        <span class="news-badge">Event</span>
+      </div>
+      <div class="news-card-body">
+        <h3>Event 3</h3>
+        <a href="#" class="news-mehr">Mehr »</a>
+      </div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-card-img">
+        Eigenes Bild einfügen
+        <span class="news-badge">News</span>
+      </div>
+      <div class="news-card-body">
+        <h3>News 2!</h3>
+        <a href="#" class="news-mehr">Mehr »</a>
+      </div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-card-img">
+        Eigenes Bild einfügen
+        <span class="news-badge">Event</span>
+      </div>
+      <div class="news-card-body">
+        <h3>Event 2</h3>
+        <a href="#" class="news-mehr">Mehr »</a>
+      </div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-card-img">
+        Eigenes Bild einfügen
+        <span class="news-badge">News</span>
+      </div>
+      <div class="news-card-body">
+        <h3>News 1!</h3>
+        <a href="#" class="news-mehr">Mehr »</a>
+      </div>
+    </div>
+
+    <div class="news-card">
+      <div class="news-card-img">
+        Eigenes Bild einfügen
+        <span class="news-badge">Event</span>
+      </div>
+      <div class="news-card-body">
+        <h3>Event 1</h3>
+        <a href="#" class="news-mehr">Mehr »</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ─── INSTAGRAM ─── -->
+<div class="instagram-section">
+  <h2>NEUES BEI<br>INSTAGRAM</h2>
+  <div class="ig-new-grid">
+
+    <div class="ig-new-item">Eigenes Bild einfügen</div>
+    <div class="ig-new-item">Eigenes Bild einfügen</div>
+    <div class="ig-new-item">Eigenes Bild einfügen</div>
+    <div class="ig-new-item">Eigenes Bild einfügen</div>
+
+    <div class="ig-new-item">Eigenes Bild einfügen</div>
+    <div class="ig-new-item">Eigenes Bild einfügen</div>
+    <div class="ig-new-item">Eigenes Bild einfügen</div>
+    <div class="ig-new-item">Eigenes Bild einfügen</div>
+
+  </div>
+  <div class="ig-new-footer">
+    <a href="#" class="ig-new-btn">Weitere Beiträge anzeigen</a>
+    <a href="https://www.instagram.com/" target="_blank" class="ig-new-btn">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="2" y="2" width="20" height="20" rx="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+      </svg>
+      Bei Instagram folgen
+    </a>
+  </div>
+</div>
+
+<!-- ─── FOOTER NEU ─── -->
+<footer class="footer-neu">
+  <a href="ehem-kohlenhofareal-grombühl.html" class="footer-neu-logo">
+    <div class="logo-mark"></div>
+    <div class="logo-text">EHEM.<br>KOHLENHOF<br>GROMBÜHL</div>
+  </a>
+
+  <ul class="footer-neu-nav">
+    <li><a href="quartier/frame.html">FRAME</a></li>
+    <li><a href="quartier/pulse.html">PULSE</a></li>
+    <li><a href="quartier/leuchtturm.html">LEUCHTTURM</a></li>
+    <li><a href="quartier/deck.html">DECK</a></li>
+    <li><a href="quartier/forum.html">FORUM</a></li>
+  </ul>
+
+  <div class="footer-neu-legal">
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+  </div>
+</footer>
+
+
+<script>
+  // Sticky nav
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Scroll-reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.13 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+  // Mobile nav
+  const hamburger = document.getElementById('hamburger');
+  const links = document.getElementById('navLinks');
+  let open = false;
+  hamburger.addEventListener('click', () => {
+    open = !open;
+    if (open) {
+      links.style.cssText = `
+        display:flex; flex-direction:column; position:fixed; inset:0;
+        background:rgba(26,0,50,.97); align-items:center; justify-content:center;
+        gap:28px; z-index:99; padding:40px;
+      `;
+    } else {
+      links.style.cssText = '';
+    }
+  });
+
+// Slideshow
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+
+  // Erstes Bild sofort sichtbar
+  slides[0].classList.add('active');
+
+  setInterval(() => {
+    const next = (current + 1) % slides.length;
+
+    // Nächstes Bild von rechts bereitstellen
+    slides[next].style.transform = 'translateX(100%)';
+    slides[next].style.transition = 'none';
+    slides[next].classList.add('active');
+
+    // Kurz warten dann beide animieren
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        slides[next].style.transition = 'transform .8s ease-in-out';
+        slides[next].style.transform = 'translateX(0%)';
+        slides[current].style.transition = 'transform .8s ease-in-out';
+        slides[current].style.transform = 'translateX(-100%)';
+      });
+    });
+
+    // Altes Bild nach Animation aufräumen
+    setTimeout(() => {
+      slides[current].classList.remove('active');
+      slides[current].style.transform = 'translateX(100%)';
+      slides[current].style.transition = 'none';
+      current = next;
+    }, 850);
+
+  }, 5000);
+</script>
+</body>
+</html>
