@@ -191,19 +191,25 @@
     .quartier-beschreibung {
       background: rgba(var(--rosa), 1);
       min-height: 100vh;
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      padding: 48px;
+      display: flex;
+      align-items: center;
+      padding: 80px 48px;
     }
-    .quartier-beschreibung h1 {
-      font-size: 1.2rem;
+    .quartier-beschreibung-text {
+      margin-left: 33%;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .quartier-beschreibung-text p {
+      font-size: 1.7rem;
       color: rgba(var(--grün2), 1);
-      line-height: 1.0;
+      line-height: 1.7;
     }
 
     @media (max-width: 700px) {
-      .quartier-beschreibung { padding: 32px 24px; }
-      .quartier-beschreibung h1 { font-size: 1.2rem; max-width: 100%; }
+      .quartier-beschreibung { padding: 60px 24px; }
+      .quartier-beschreibung-text { margin-left: 0; }
     }
 
 
@@ -524,8 +530,10 @@
 
 <!-- ─── QUARTIER BESCHREIBUNG ─── -->
 <div class="quartier-beschreibung">
-  <h1>Mitten in Grombühl entsteht das EHEMALIGE KOHLENHOFAREAL GROMBÜHL: xx.xxxm² in fünf Gebäuden - mit xxx. </h1>
-  <h1>Beschreibung. </h1>
+  <div class="quartier-beschreibung-text">
+    <p>Mitten in Grombühl entsteht das EHEMALIGE KOHLENHOFAREAL GROMBÜHL: xx.000 m² in fünf Gebäuden – mit xxx.</p>
+    <p>Beschreibung.</p>
+  </div>
 </div>
 
 
