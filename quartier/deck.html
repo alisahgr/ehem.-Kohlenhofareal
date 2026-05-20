@@ -72,7 +72,6 @@
 <!-- ─── HAUS ABOUT ─── -->
 <div class="haus-about">
   <h2>Mehr als ein Parkhaus.</h2>
-
   <div class="haus-about-text">
     <div>
       <p>Beschreibung Deck.</p>
@@ -85,13 +84,11 @@
       <p>Beschreibung Deck.</p>
     </div>
   </div>
-
   <div class="haus-about-links">
     <a href="dokumente/plaene-preise.pdf" target="_blank" class="haus-about-link">
       Pläne & Preise <span>———→</span>
     </a>
   </div>
-
   <!-- Bildslider -->
   <div class="haus-slider" id="hausSlider">
     <div class="haus-slider-track" id="hausSliderTrack">
@@ -116,7 +113,6 @@
     </div>
   </div>
   <div class="haus-slider-dots" id="hausSliderDots"></div>
-
 </div>
 
 <script>
@@ -124,7 +120,6 @@
   const dotsContainer = document.getElementById('hausSliderDots');
   const slides = track.querySelectorAll('.haus-slide');
   let current = 0;
-
   // Dots erstellen - nur (slides.length - 2) Dots
   const dotCount = slides.length - 2;
   for (let i = 0; i < dotCount; i++) {
@@ -134,7 +129,6 @@
     dot.addEventListener('click', () => goTo(i));
     dotsContainer.appendChild(dot);
   }
-
   function goTo(index) {
     current = index;
     track.style.transform = `translateX(-${current * 33.333}%)`;
@@ -142,7 +136,6 @@
       d.classList.toggle('active', i === current);
     });
   }
-
   // Auto-play
   setInterval(() => {
     const next = (current + 1) % (slides.length - 2);
@@ -154,10 +147,8 @@
 <!-- ─── MIETFLÄCHEN ─── -->
 <div class="mietflaechen" id="parkflaechen">
   <div class="mietflaechen-titel">Park-<br>flächen</div>
-
   <!-- Spalte Mitte -->
   <div class="mietflaechen-spalte">
-
     <div class="mf-card">
       <h3>D.0.01</h3>
       <ul class="mf-info">
@@ -170,7 +161,6 @@
       </ul>
       <a href="../kontakt.html" class="mf-anfragen">anfragen ↗</a>
     </div>
-
     <div class="mf-card">
       <h3>D.2.01</h3>
       <ul class="mf-info">
@@ -183,7 +173,6 @@
       </ul>
       <a href="../kontakt.html" class="mf-anfragen">anfragen ↗</a>
     </div>
-
     <div class="mf-card">
       <h3>D.4.01</h3>
       <ul class="mf-info">
@@ -196,31 +185,14 @@
       </ul>
       <a href="../kontakt.html" class="mf-anfragen">anfragen ↗</a>
     </div>
-
-    <div class="mf-card">
-      <h3>D.6.01</h3>
-      <ul class="mf-info">
-        <li>Stockwerk: 6.OG</li>
-        <li>Mietfläche: xxx,xx m²</li>
-        <li>Gemeinschaftsfläche Geschoss anteilig: xx,xx m²</li>
-        <li>Gemeinschaftsfläche Gebäude anteilig: xx,xx m²</li>
-        <li><strong>Gesamt: xxx,xx m²</strong></li>
-        <li>Nutzung: xx</li>
-      </ul>
-      <a href="../kontakt.html" class="mf-anfragen">anfragen ↗</a>
-    </div>
-
     <!-- Grundriss Bild -->
     <div class="mf-grundriss-img">
       <div class="mf-grundriss-placeholder">Grundriss / Eigenes Bild einfügen</div>
       <p class="mf-grundriss-caption">Deck Beispielfläche Parken</p>
     </div>
-
   </div>
-
   <!-- Spalte Rechts -->
   <div class="mietflaechen-spalte">
-
     <div class="mf-card">
       <h3>D.1.01</h3>
       <ul class="mf-info">
@@ -233,7 +205,6 @@
       </ul>
       <a href="../kontakt.html" class="mf-anfragen">anfragen ↗</a>
     </div>
-
     <div class="mf-card">
       <h3>D.3.01</h3>
       <ul class="mf-info">
@@ -246,7 +217,6 @@
       </ul>
       <a href="../kontakt.html" class="mf-anfragen">anfragen ↗</a>
     </div>
-
     <div class="mf-card">
       <h3>D.5.01</h3>
       <ul class="mf-info">
@@ -259,22 +229,108 @@
       </ul>
       <a href="../kontakt.html" class="mf-anfragen">anfragen ↗</a>
     </div>
-
   </div>
 </div>
+
+
+<!-- ─── STANDARD-AUSSTATTUNG ─── -->
+<section class="standard-section">
+  <!-- Linke Spalte: Überschrift -->
+  <div class="heading-col">
+    <h2>Das ist<br>Stan-<br>dard</h2>
+  </div>
+  <!-- Rechte Spalte: Abgerundeter Kasten -->
+  <div class="content-box">
+      <!-- Zeile 1 -->
+      <div class="pair-group">
+        <div class="item">
+          <div class="item-label">Innenwände Gipskarton</div>
+          <div class="item-value">Oberfläche Q2, Weiß gestrichen 3 Schichten, R´w=35 dB inkl. Türen</div>
+        </div>
+        <div class="item">
+          <div class="item-label">Glaswände</div>
+          <div class="item-value">Mietersonderwunsch</div>
+        </div>
+      </div>
+      <!-- Zeile 2 -->
+      <div class="pair-group">
+        <div class="item">
+          <div class="item-label">Abhangdecken (AD)</div>
+          <div class="item-value">Oberfläche Q2, Weiß gestrichen 3 Schichten</div>
+        </div>
+        <div class="item">
+          <div class="item-label">Alle weiteren Wände und Decken</div>
+          <div class="item-value">Sichtbeton</div>
+        </div>
+      </div>
+      <!-- Zeile 3 -->
+      <div class="pair-group">
+        <div class="item">
+          <div class="item-label">Boden</div>
+          <div class="item-value">Doppelboden mit Teppichbelag</div>
+        </div>
+        <div class="item">
+          <div class="item-label">Türen</div>
+          <div class="item-value">Holztüren mit Umfassungszarge, Schalldämpfung R´w = 27 dB.</div>
+        </div>
+      </div>
+      <!-- Zeile 4 -->
+      <div class="pair-group">
+        <div class="item">
+          <div class="item-label">Bodentanks</div>
+          <div class="item-value">1 Stk pro 20 m2 (gerundet)</div>
+        </div>
+        <div class="item">
+          <div class="item-label">WCs</div>
+          <div class="item-value">gefliest, ausgestattet mit Grohe Sanitärobjekten</div>
+        </div>
+      </div>
+      <!-- Zeile 5 -->
+      <div class="pair-group">
+        <div class="item">
+          <div class="item-label">Teeküchen</div>
+          <div class="item-value">Ausstattung mit Möbel und Geräten (Geschirrspüler, Kühlschrank, Mikrowelle)</div>
+        </div>
+        <div class="item">
+          <div class="item-label">Leuchten</div>
+          <div class="item-value">Langfeldleuchten, Pendelleuchten Deckenmontage, Spots in den Fluren</div>
+        </div>
+      </div>
+      <!-- Zeile 6 -->
+      <div class="pair-group">
+        <div class="item">
+          <div class="item-label">Zugangskontrolle (ZuKo)</div>
+          <div class="item-value">Videosprechanlage Hauseingangstür, Klingel an Mieteinheitstür. Gateway IP-System im Technikraum</div>
+        </div>
+        <div class="item">
+          <div class="item-label">Lüftung</div>
+          <div class="item-value">Technikräume am Kern, Verteilung in den Fluren</div>
+        </div>
+      </div>
+      <!-- Zeile 7 -->
+      <div class="pair-group">
+        <div class="item last-row">
+          <div class="item-label">Heizung / Kühlung</div>
+          <div class="item-value">Deckensegel aus perforiertem Blech</div>
+        </div>
+        <div class="item last-row">
+          <div class="item-label">Sonnenschutz</div>
+          <div class="item-value">außenliegende Vertikalmarkisen</div>
+        </div>
+      </div>
+  </div>
+</section>
 
 
 <!-- ─── MIETFLÄCHEN ─── -->
 <div class="mietflaechen" id="sportflaechen">
   <div class="mietflaechen-titel">Sport-<br>flächen</div>
-
   <!-- Spalte Mitte -->
   <div class="mietflaechen-spalte">
-
     <div class="mf-card">
-      <h3>D.7.01</h3>
+      <h3>D.6.01</h3>
       <ul class="mf-info">
-        <li>Stockwerk: 7.OG</li>
+        <li>Stockwerk: 6.OG</li>
         <li>Mietfläche: xxx,xx m²</li>
         <li>Gemeinschaftsfläche Geschoss anteilig: xx,xx m²</li>
         <li>Gemeinschaftsfläche Gebäude anteilig: xx,xx m²</li>
@@ -283,154 +339,203 @@
       </ul>
       <a href="../kontakt.html" class="mf-anfragen">anfragen ↗</a>
     </div>
-
     <!-- Grundriss Bild -->
     <div class="mf-grundriss-img">
       <div class="mf-grundriss-placeholder">Grundriss / Eigenes Bild einfügen</div>
       <p class="mf-grundriss-caption">Deck Beispielfläche Sport</p>
     </div>
-
   </div>
-
   <!-- Spalte Rechts -->
   <div class="mietflaechen-spalte">
-
   </div>
 </div>
 
 
-<!-- AUSSTATTUNG -->
-<section id="ausstattung" class="ausstattung-section">
-  <div class="section-label" style="color:var(--orange)">Standard-Ausstattung</div>
-  <h2 class="section-title">Das ist inklusive</h2>
-  <div class="ausstattung-grid">
-    
-    <div class="aust-item fade-up">
-      <div class="aust-icon">🎨</div>
-      <div class="aust-title">Ateliers</div>
-      <div class="aust-text">Offene Grundrisse mit optimaler Nordbelichtung</div>
-    </div>
-
-    <div class="aust-item fade-up">
-      <div class="aust-icon">💻</div>
-      <div class="aust-title">Co-Working</div>
-      <div class="aust-text">Fix-Desks und Hot-Desks auf mehreren Etagen</div>
-    </div>
-
-    <div class="aust-item fade-up">
-      <div class="aust-icon">🔆</div>
-      <div class="aust-title">Licht</div>
-      <div class="aust-text">Großzügige Fenster und Oberlichter</div>
-    </div>
-
-    <div class="aust-item fade-up">
-      <div class="aust-icon">🟫</div>
-      <div class="aust-title">Boden</div>
-      <div class="aust-text">Doppelboden mit flexibler Leitungsführung</div>
-    </div>
-
-    <div class="aust-item fade-up">
-      <div class="aust-icon">🏗️</div>
-      <div class="aust-title">Wände</div>
-      <div class="aust-text">Leichtbauwände für individuelle Raumaufteilung</div>
-    </div>
-
-    <div class="aust-item fade-up">
-      <div class="aust-icon">☕</div>
-      <div class="aust-title">Gemeinschaft</div>
-      <div class="aust-text">Gemeinschaftsküchen und Lounges auf jeder Etage</div>
-    </div>
-
-    <div class="aust-item fade-up">
-      <div class="aust-icon">📺</div>
-      <div class="aust-title">Meetingräume</div>
-      <div class="aust-text">Buchbare Konferenzräume mit AV-Ausstattung</div>
-    </div>
-
-    <div class="aust-item fade-up">
-      <div class="aust-icon">💡</div>
-      <div class="aust-title">Beleuchtung</div>
-      <div class="aust-text">Tageslichtoptimiertes Lichtkonzept</div>
-    </div>
-
-    <div class="aust-item fade-up">
-      <div class="aust-icon">🌡️</div>
-      <div class="aust-title">Klima</div>
-      <div class="aust-text">Einzelraumregelung für Heizung und Kühlung</div>
-    </div>
-
-    <div class="aust-item fade-up">
-      <div class="aust-icon">🔒</div>
-      <div class="aust-title">Zugang</div>
-      <div class="aust-text">24/7-Zugang per App oder Karte</div>
-    </div>
-
-    <div class="aust-item fade-up">
-      <div class="aust-icon">🚲</div>
-      <div class="aust-title">Mobilität</div>
-      <div class="aust-text">Fahrradstellplätze und E-Bike-Ladestation</div>
-    </div>
-
-    <div class="aust-item fade-up">
-      <div class="aust-icon">🐾</div>
-      <div class="aust-title">Haustiere</div>
-      <div class="aust-text">Haustierfreundliches Gebäude</div>
-    </div>
+<!-- ─── STANDARD-AUSSTATTUNG ─── -->
+<section class="standard-section">
+  <!-- Linke Spalte: Überschrift -->
+  <div class="heading-col">
+    <h2>Das ist<br>Stan-<br>dard</h2>
+  </div>
+  <!-- Rechte Spalte: Abgerundeter Kasten -->
+  <div class="content-box">
+      <!-- Zeile 1 -->
+      <div class="pair-group">
+        <div class="item">
+          <div class="item-label">Innenwände Gipskarton</div>
+          <div class="item-value">Oberfläche Q2, Weiß gestrichen 3 Schichten, R´w=35 dB inkl. Türen</div>
+        </div>
+        <div class="item">
+          <div class="item-label">Glaswände</div>
+          <div class="item-value">Mietersonderwunsch</div>
+        </div>
+      </div>
+      <!-- Zeile 2 -->
+      <div class="pair-group">
+        <div class="item">
+          <div class="item-label">Abhangdecken (AD)</div>
+          <div class="item-value">Oberfläche Q2, Weiß gestrichen 3 Schichten</div>
+        </div>
+        <div class="item">
+          <div class="item-label">Alle weiteren Wände und Decken</div>
+          <div class="item-value">Sichtbeton</div>
+        </div>
+      </div>
+      <!-- Zeile 3 -->
+      <div class="pair-group">
+        <div class="item">
+          <div class="item-label">Boden</div>
+          <div class="item-value">Doppelboden mit Teppichbelag</div>
+        </div>
+        <div class="item">
+          <div class="item-label">Türen</div>
+          <div class="item-value">Holztüren mit Umfassungszarge, Schalldämpfung R´w = 27 dB.</div>
+        </div>
+      </div>
+      <!-- Zeile 4 -->
+      <div class="pair-group">
+        <div class="item">
+          <div class="item-label">Bodentanks</div>
+          <div class="item-value">1 Stk pro 20 m2 (gerundet)</div>
+        </div>
+        <div class="item">
+          <div class="item-label">WCs</div>
+          <div class="item-value">gefliest, ausgestattet mit Grohe Sanitärobjekten</div>
+        </div>
+      </div>
+      <!-- Zeile 5 -->
+      <div class="pair-group">
+        <div class="item">
+          <div class="item-label">Teeküchen</div>
+          <div class="item-value">Ausstattung mit Möbel und Geräten (Geschirrspüler, Kühlschrank, Mikrowelle)</div>
+        </div>
+        <div class="item">
+          <div class="item-label">Leuchten</div>
+          <div class="item-value">Langfeldleuchten, Pendelleuchten Deckenmontage, Spots in den Fluren</div>
+        </div>
+      </div>
+      <!-- Zeile 6 -->
+      <div class="pair-group">
+        <div class="item">
+          <div class="item-label">Zugangskontrolle (ZuKo)</div>
+          <div class="item-value">Videosprechanlage Hauseingangstür, Klingel an Mieteinheitstür. Gateway IP-System im Technikraum</div>
+        </div>
+        <div class="item">
+          <div class="item-label">Lüftung</div>
+          <div class="item-value">Technikräume am Kern, Verteilung in den Fluren</div>
+        </div>
+      </div>
+      <!-- Zeile 7 -->
+      <div class="pair-group">
+        <div class="item last-row">
+          <div class="item-label">Heizung / Kühlung</div>
+          <div class="item-value">Deckensegel aus perforiertem Blech</div>
+        </div>
+        <div class="item last-row">
+          <div class="item-label">Sonnenschutz</div>
+          <div class="item-value">außenliegende Vertikalmarkisen</div>
+        </div>
+      </div>
   </div>
 </section>
 
 
-<!-- CONTACT -->
-<section id="kontakt" class="contact-section">
-  <div class="contact-grid">
-    <div class="contact-info">
-      <div class="section-label" style="color:rgba(255,255,255,.45)">Mietanfrage</div>
-      <h2 class="section-title" style="color:var(--white)">Laterne – Kontakt</h2>
-      <p>Wir freuen uns auf deine Anfrage! Nutze das Formular oder kontaktiere uns direkt per Telefon oder E-Mail.</p>
-      <div class="contact-detail">
-        <span>📞</span><div><div style="font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:2px">Telefon</div><strong>+49 (30) 346 55 55 01</strong></div>
-      </div>
-      <div class="contact-detail">
-        <span>✉️</span><div><div style="font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:2px">E-Mail</div><strong>info@kreativ-quartier-potsdam.de</strong></div>
-      </div>
-      <div class="contact-detail">
-        <span>📍</span><div><div style="font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:2px">Adresse</div><strong>Kreativ Quartier Potsdam<br>Plantage, 14471 Potsdam</strong></div>
-      </div>
-    </div>
-    <div>
-      <div class="contact-form">
-        <form id="contactForm">
-          <div class="form-row">
-            <div class="form-group"><label>Vorname</label><input type="text" placeholder="Max" /></div>
-            <div class="form-group"><label>Nachname</label><input type="text" placeholder="Mustermann" /></div>
-          </div>
-          <div class="form-row">
-            <div class="form-group"><label>E-Mail</label><input type="email" placeholder="max@beispiel.de" /></div>
-            <div class="form-group"><label>Telefon</label><input type="tel" placeholder="+49 ..." /></div>
-          </div>
-          <div class="form-group">
-            <label>Gewünschte Fläche</label>
-            <select id="flaecheSelect">
-              <option value="">– bitte wählen –</option>
-              <option value="F.01">F.01</option>
-<option value="F.02">F.02</option>
-<option value="F.03">F.03</option>
-<option value="F.04">F.04</option>
-<option value="F.05">F.05</option>
-<option value="F.06">F.06</option>
-<option value="F.07">F.07</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Nachricht</label>
-            <textarea placeholder="Kurze Beschreibung Ihres Projekts, gewünschter Einzugstermin ..."></textarea>
-          </div>
-          <button type="submit" class="form-submit">Anfrage senden →</button>
-        </form>
-      </div>
+<!-- ─── KONTAKT HERO ─── -->
+<div class="kontakt-hero">
+  <!-- Bild einfügen: src="bilder/kontakt.jpg" -->
+  <div class="kontakt-hero-placeholder">Eigenes Bild einfügen</div>
+  <div class="kontakt-hero-text">
+    <h2>Wir<br>freuen<br>uns<br>kontaktiert<br>zu<br>werden.</h2>
+  </div>
+</div>
+
+
+<!-- ─── KONTAKT ─── -->
+<div class="haus-kontakt" id="kontakt">
+  <div class="haus-kontakt-info">
+    <p><strong>Danke für dein Interesse.</strong> Für eine Mietanfrage nutze gerne das folgende Formular. Telefon oder E-Mail geht auch.</p>
+    <div class="kontakt-meta">
+      Telefon: +49 (xx) xxx xx xx xx<br>
+      E-Mail: info@ehem-kohlenhof-grombühl.de
     </div>
   </div>
-</section>
+  <form class="haus-kontakt-form" id="kontaktForm">
+    <div class="kf-group">
+      <label>Vorname</label>
+      <input type="text" placeholder="" />
+    </div>
+    <div class="kf-group">
+      <label>Name <span class="required">*</span></label>
+      <input type="text" required />
+    </div>
+    <div class="kf-group">
+      <label>E-Mail <span class="required">*</span></label>
+      <input type="email" required />
+    </div>
+    <div class="kf-group">
+      <label>Telefon <span class="required">*</span></label>
+      <input type="tel" required />
+    </div>
+    <div class="kf-group">
+      <label>Mietfläche <span class="required">*</span></label>
+      <select required>
+        <option value="">– bitte wählen –</option>
+        <option>D.0.01</option>
+        <option>D.1.01</option>
+        <option>D.2.01</option>
+        <option>D.3.01</option>
+        <option>D.4.01</option>
+        <option>D.5.01</option>
+        <option>D.6.01</option>
+      </select>
+    </div>
+    <div class="kf-group">
+      <label>Nachricht</label>
+      <textarea placeholder="optional"></textarea>
+    </div>
+    <div class="kf-group">
+      <label class="kf-captcha-label" id="captchaLabel"></label>
+      <input type="text" id="captchaInput" placeholder="" required />
+      <span class="kf-error" id="captchaError">Falsche Antwort, bitte nochmal versuchen.</span>
+    </div>
+    <button type="submit" class="kf-submit">Senden</button>
+  </form>
+</div>
+
+<script>
+  // Captcha
+  let captchaAnswer = 0;
+  function generateCaptcha() {
+    const a = Math.floor(Math.random() * 9) + 1;
+    const b = Math.floor(Math.random() * 9) + 1;
+    captchaAnswer = a + b;
+    document.getElementById('captchaLabel').textContent = `${a} + ${b} =`;
+  }
+  generateCaptcha();
+  // Formular
+  document.getElementById('kontaktForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const input = document.getElementById('captchaInput');
+    const error = document.getElementById('captchaError');
+    if (parseInt(input.value) !== captchaAnswer) {
+      error.style.display = 'block';
+      input.value = '';
+      generateCaptcha();
+      return;
+    }
+    error.style.display = 'none';
+    const btn = e.target.querySelector('.kf-submit');
+    btn.textContent = 'Nachricht gesendet ✓';
+    btn.style.background = 'rgba(var(--grün2), 1)';
+    setTimeout(() => {
+      btn.textContent = 'Senden';
+      btn.style.background = '';
+      e.target.reset();
+      generateCaptcha();
+    }, 3500);
+  });
+</script>
+
 
 <!-- ─── FOOTER NEU ─── -->
 <footer class="footer-neu">
@@ -438,7 +543,6 @@
     <div class="logo-mark"></div>
     <div class="logo-text">EHEM.<br>KOHLENHOF<br>GROMBÜHL</div>
   </a>
-
   <ul class="footer-neu-nav">
     <li><a href="frame.html">FRAME</a></li>
     <li><a href="pulse.html">PULSE</a></li>
@@ -446,10 +550,9 @@
     <li><a href="deck.html">DECK</a></li>
     <li><a href="forum.html">FORUM</a></li>
   </ul>
-
   <div class="footer-neu-legal">
-    <a href="#">Impressum</a>
-    <a href="#">Datenschutz</a>
+    <a href="../impressum.html">Impressum</a>
+    <a href="../datenschutz.html">Datenschutz</a>
   </div>
 </footer>
 
@@ -459,13 +562,11 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 60);
   });
-
   // Scroll reveal
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
-
   // Hamburger
   const hamburger = document.getElementById('hamburger');
   const links = document.getElementById('navLinks');
@@ -476,7 +577,6 @@
       ? 'display:flex;flex-direction:column;position:fixed;inset:0;background:rgba(26,0,50,.97);align-items:center;justify-content:center;gap:28px;z-index:99;padding:40px;'
       : '';
   });
-
   // Smooth scroll for pills
   document.querySelectorAll('.house-nav-pill, [href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
@@ -486,7 +586,6 @@
       if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
   });
-
   // Pre-fill form from card clicks
   document.querySelectorAll('.fl-action.anfragen').forEach(btn => {
     btn.addEventListener('click', e => {
@@ -499,7 +598,6 @@
       }
     });
   });
-
   // Contact form
   const form = document.getElementById('contactForm');
   if (form) {

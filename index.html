@@ -35,37 +35,65 @@
 
     /* ── NAV ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      z-index: 100;
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between;
       padding: 20px 48px;
       background: transparent;
       transition: background .3s;
     }
     nav.scrolled { 
-      background: rgba(255,255,255,.50); backdrop-filter: blur(14px); 
+      background: rgba(255,255,255,.50); 
+      backdrop-filter: blur(14px); 
     }
     .nav-logo { 
-      display: flex; align-items: center; gap: 10px; text-decoration: none; 
+      display: flex; 
+      align-items: center; 
+      gap: 10px; 
+      text-decoration: none; 
     }
     .logo-mark { 
-      width: 34px; height: 34px; background: rgba(var(--grün2), 1); border-radius: 50%; flex-shrink: 0; 
+      width: 34px; 
+      height: 34px; 
+      background: rgba(var(--grün2), 1); 
+      border-radius: 50%; 
+      flex-shrink: 0; 
     }
     .logo-text {
-      font-family: 'Archivo Black', sans-serif; font-size: 1rem;
-      color: rgba(var(--grün2), 1); letter-spacing: .07em; line-height: 1.15;
+      font-family: 'Archivo Black', sans-serif; 
+      font-size: 1rem;
+      color: rgba(var(--grün2), 1); 
+      letter-spacing: .07em; 
+      line-height: 1.15;
     }
     .nav-links { 
-      display: flex; gap: 32px; list-style: none; align-items: center; 
+      display: flex; 
+      gap: 32px; 
+      list-style: none; 
+      align-items: center; 
     }
     .nav-links a {
-      color: rgba(var(--grün2), 1); text-decoration: none;
-      font-size: 1rem; font-weight: 400; letter-spacing: .06em;
-      text-transform: uppercase; position: relative;
+      color: rgba(var(--grün2), 1); 
+      text-decoration: none;
+      font-size: 1rem; 
+      font-weight: 400; 
+      letter-spacing: .06em;
+      text-transform: uppercase; 
+      position: relative;
     }
     .nav-links a::after {
-      content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
-      height: 1px; background: rgba(var(--grün2), 1);
-      transform: scaleX(0); transition: transform .25s;
+      content: ''; 
+      position: absolute; 
+      bottom: -3px; left: 0; right: 0;
+      height: 1px; 
+      background: rgba(var(--grün2), 1);
+      transform: scaleX(0); 
+      transition: transform .25s;
     }
     .nav-links a:hover::after { 
       transform: scaleX(1); 
@@ -74,8 +102,11 @@
       position: relative; 
     }
     .dropdown-menu {
-      display: none; position: absolute; top: 160%; left: 0;
-      background: rgba(var(--rosa), 1); min-width: 170px;
+      display: none; 
+      position: absolute; 
+      top: 160%; left: 0;
+      background: rgba(var(--rosa), 1); 
+      min-width: 170px;
     }
     .dropdown-menu::before {
       content: '';
@@ -85,17 +116,28 @@
       height: 20px;      
       background: transparent;
     }
-    .dropdown:hover .dropdown-menu { display: block; }
+    .dropdown:hover .dropdown-menu { 
+      display: block; 
+    }
     .dropdown-menu a {
-      display: block; padding: 8px 18px; font-size: 1rem;
-      text-transform: none; letter-spacing: 0; color: rgba(var(--grün2), 1);
+      display: block; 
+      padding: 8px 18px; 
+      font-size: 1rem;
+      text-transform: none; 
+      letter-spacing: 0; 
+      color: rgba(var(--grün2), 1);
     }
-    .dropdown-menu a::after { display: none; 
+    .dropdown-menu a::after { 
+      display: none; 
     }
-    .dropdown-menu a:hover { background: rgba(var(--grün2), 1); color: rgba(var(--rosa), 1); text-decoration: underline; 
+    .dropdown-menu a:hover { 
+      background: rgba(var(--grün2), 1);
+      color: rgba(var(--rosa), 1); 
+      text-decoration: underline; 
     }
     .nav-cta {
-      background: var(--white) !important; color: var(--white) !important;
+      background: var(--white) !important;
+      color: var(--white) !important;
       padding: 10px 22px !important;
     }
     .nav-cta::after { 
@@ -105,60 +147,91 @@
       background: #c9461a !important; 
     }
     .hamburger { 
-      display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; 
+      display: none; 
+      flex-direction: column;
+      gap: 5px; 
+      cursor: pointer; 
+      background: none; 
+      border: none; 
+      padding: 4px; 
     }
     .hamburger span { 
-      width: 26px; height: 2px; background: var(--white); display: block; transition: .3s; 
+      width: 26px; 
+      height: 2px; 
+      background: var(--white); 
+      display: block; 
+      transition: .3s; 
     }
 
 
     /* ── HERO ── */
     .hero {
-      position: relative; height: 100vh; min-height: 620px;
-      display: flex; flex-direction: column;
-      justify-content: flex-end; padding: 0 0 80px 48px;
+      position: relative; 
+      height: 100vh; 
+      min-height: 620px;
+      display: flex; 
+      flex-direction: column;
+      justify-content: flex-end; 
+      padding: 0 0 80px 48px;
       background: linear-gradient(155deg, rgba(var(--rosa), 1) 0%, var(--purple) 45%, #2d0f50 100%);
       overflow: hidden;
     }
-
     .hero-grid {
       position: absolute; inset: 0; opacity: .05;
       background-image:
         repeating-linear-gradient(0deg, white 0, white 1px, transparent 1px, transparent 64px),
         repeating-linear-gradient(90deg, white 0, white 1px, transparent 1px, transparent 64px);
     }
-
-
     /* scrolling ticker rows */
     .hero-ticker {
-      position: absolute; inset: 0;
-      display: flex; flex-direction: column; justify-content: space-around;
-      pointer-events: none; overflow: hidden;
+      position: absolute; 
+      inset: 0;
+      display: flex; 
+      flex-direction: column; 
+      justify-content: space-around;
+      pointer-events: none; 
+      overflow: hidden;
     }
-    .ticker-row { overflow: hidden; padding: 0; }
+    .ticker-row { 
+      overflow: hidden; 
+      padding: 0; 
+    }
     .ticker-inner {
-      display: inline-flex; gap: 80px; white-space: nowrap;
+      display: inline-flex; 
+      gap: 80px; 
+      white-space: nowrap;
       animation: tickerL 30s linear infinite;
     }
-    .ticker-row:nth-child(even) .ticker-inner { animation-name: tickerR; }
+    .ticker-row:nth-child(even) .ticker-inner { 
+      animation-name: tickerR; 
+    }
     .ticker-item {
       font-family: 'Bebas Neue', sans-serif;
       font-size: clamp(3.5rem, 9vw, 8rem);
       color: rgba(255,255,255,.045);
       letter-spacing: .02em; flex-shrink: 0;
     }
+
     @keyframes tickerL { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     @keyframes tickerR { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
-    .hero-content { position: relative; z-index: 2; }
+    .hero-content { 
+      position: relative; z-index: 2; 
+    }
     .hero-overline {
-      font-size: .7rem; letter-spacing: .22em; text-transform: uppercase;
-      color: var(--orange); margin-bottom: 16px; font-weight: 500;
+      font-size: .7rem; 
+      letter-spacing: .22em; 
+      text-transform: uppercase;
+      color: var(--orange); 
+      margin-bottom: 16px; 
+      font-weight: 500;
     }
     .hero-title {
       font-family: 'Archivo Black', sans-serif;
       font-size: clamp(3.8rem, 7.5vw, 6.5rem);
-      color: rgb(var(--grün2), 1); line-height: .92; margin-bottom: 28px;
+      color: rgb(var(--grün2), 1); 
+      line-height: .92; 
+      margin-bottom: 28px;
     }
 
 
@@ -183,13 +256,11 @@
     .slide.exit {
       transform: translateX(-100%);
     }
-
     /* Bilder – trage deine Bildpfade ein */
     .slide-1 {background-image: url('bilder/Ausblick_Platz_vorher.jpeg'); }
     .slide-2 {background-image: url('bilder/Ausblick_Platz_nachher.jpg'); }
     .slide-3 {background-image: url('bilder/Ausblick_Straße_vorher.jpeg'); }
     .slide-4 {background-image: url('bilder/Ausblick_Straße_nachher.jpg'); }
-
     /* Abdunklung damit der Titel lesbar bleibt */
     .slideshow::after {
       content: '';
@@ -237,18 +308,6 @@
     }
 
 
-    /* ── SHARED SECTION STYLES ── */
-    section { padding: 100px 48px; }
-    .section-label {
-      font-size: .68rem; letter-spacing: .22em; text-transform: uppercase;
-      color: var(--orange); font-weight: 500; margin-bottom: 10px;
-    }
-    .section-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.6rem, 5vw, 4.2rem); line-height: .97;
-    }
-
-
     /* ── MOSAIK ── */
     .mosaik {
       display: grid;
@@ -279,31 +338,30 @@
       position: relative;
       z-index: 1;
    }
-
     /* Zelle 1: links oben */
     .mosaik-z1 {
       background: rgba(var(--grün2), 1);
       align-items: flex-start;
     }
-    .mosaik-z1 .mosaik-text { color: rgba(var(--rosa), 1); }
-
+    .mosaik-z1 .mosaik-text { 
+      color: rgba(var(--rosa), 1); 
+    }
     /* Zelle 2: Foto oben mittig */
     .mosaik-z2 {
       padding: 0;
     }
-
     /* Zelle 3: rechts oben */
     .mosaik-z3 {
       background: rgba(var(--grün2), 1);
       align-items: flex-start;
     }
-    .mosaik-z3 .mosaik-text { color: rgba(var(--rosa), 1); }
-
+    .mosaik-z3 .mosaik-text { 
+      color: rgba(var(--rosa), 1); 
+    }
     /* Zelle 4: Foto unten links */
     .mosaik-z4 {
       padding: 0;
     }
-   
     /* Zelle 5: groß zentriert */
     .mosaik-z5 {
       background: rgba(var(--rosa), 1);
@@ -315,18 +373,13 @@
       color: rgba(var(--grün2), 1);
       font-size: clamp(2rem, 4vw, 4.5rem);
     }
-
     /* Zelle 6: Foto unten rechts */
     .mosaik-z6 {
       padding: 0;
     }
 
     @media (max-width: 700px) {
-      .mosaik {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: repeat(3, 1fr);
-        aspect-ratio: auto;
-      }
+      .mosaik {grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3, 1fr); aspect-ratio: auto; }
     }
 
  
@@ -361,11 +414,18 @@
       position: relative;
       aspect-ratio: 16/10;
       overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-      font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: #aaa;
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      font-size: .7rem; 
+      letter-spacing: .1em; 
+      text-transform: uppercase; 
+      color: #aaa;
     }
     .news-card-img img {
-      width: 100%; height: 100%; object-fit: cover;
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover;
     }
     .news-badge {
       position: absolute;
@@ -373,14 +433,17 @@
       background: rgba(var(--grün2), 1);
       color: rgb(var(--rosa), 1);
       font-family: 'DM Sans', sans-serif;
-      font-size: .75rem; letter-spacing: .12em;
+      font-size: .75rem; 
+      letter-spacing: .12em;
       padding: 4px 12px;
       border-radius: 20px;
       text-transform: uppercase;
     }
     .news-card-body {
       padding: 24px 22px 28px;
-      display: flex; flex-direction: column; flex: 1;
+      display: flex; 
+      flex-direction: column; 
+      flex: 1;
     }
     .news-card-body h3 {
       font-family: 'Archivo Black', sans-serif;
@@ -398,7 +461,8 @@
       background: rgba(var(--grün2), 1);
       color: rgba(var(--rosa), 1);
       font-family: 'DM Sans', sans-serif;
-      font-size: .85rem; letter-spacing: .1em;
+      font-size: .85rem; 
+      letter-spacing: .1em;
       padding: 8px 18px;
       text-decoration: none;
       align-self: flex-start;
@@ -441,18 +505,26 @@
       background: #e0dcd5;
       overflow: hidden;
       position: relative;
-      display: flex; align-items: center; justify-content: center;
-      font-size: .65rem; letter-spacing: .1em;
-      text-transform: uppercase; color: #aaa;
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      font-size: .65rem; 
+      letter-spacing: .1em;
+      text-transform: uppercase; 
+      color: #aaa;
       cursor: pointer;
     }
     .ig-new-item img {
-      width: 100%; height: 100%; object-fit: cover;
-      position: absolute; inset: 0;
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover;
+      position: absolute; 
+      inset: 0;
     }
     /* erste Spalte leer / kein Element = grid füllt ab Spalte 2 */
-    .ig-new-item:first-child { grid-column: 2; }
-
+    .ig-new-item:first-child { 
+      grid-column: 2; 
+    }
     .ig-new-footer {
       display: flex; gap: 12px;
       justify-content: center;
@@ -461,12 +533,16 @@
       margin-left: auto;
     }
     .ig-new-btn {
-      display: inline-flex; align-items: center; gap: 8px;
+      display: inline-flex; 
+      align-items: center; 
+      gap: 8px;
       padding: 10px 24px;
       background: rgba(var(--rosa), 1);
       color: rgba(var(--grün2), 1);
-      font-size: .8rem; letter-spacing: .06em;
-      text-decoration: none; text-transform: none;
+      font-size: .8rem; 
+      letter-spacing: .06em;
+      text-decoration: none; 
+      text-transform: none;
       transition: background .2s, color .2s;
     }
     .ig-new-btn:hover {
@@ -481,6 +557,7 @@
     @media (max-width: 600px) {
       .ig-new-grid { grid-template-columns: 1fr 1fr; }
     }
+
 
     /* ── FOOTER NEU ── */
     .footer-neu {
@@ -554,45 +631,14 @@
       .footer-neu { padding: 60px 24px 40px; }
       .footer-neu-nav a { font-size: 1.8rem; }
     }
-
-
-    /* ── FADE UP ── */
-    .fade-up {
-      opacity: 0; transform: translateY(28px);
-      transition: opacity .65s ease, transform .65s ease;
-    }
-    .fade-up.visible { opacity: 1; transform: translateY(0); }
-    .fd1 { transition-delay: .1s; }
-    .fd2 { transition-delay: .2s; }
-    .fd3 { transition-delay: .3s; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 960px) {
-      nav { padding: 16px 24px; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      section { padding: 70px 24px; }
-      .ueber { grid-template-columns: 1fr; gap: 36px; }
-      .haeuser-grid { grid-template-columns: 1fr 1fr; }
-      .haus-card:first-child { grid-column: span 2; }
-      .news-grid { grid-template-columns: 1fr 1fr; }
-      .cta-banner { flex-direction: column; gap: 40px; text-align: left; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .hero { padding: 0 24px 60px; }
-      .hero-badge { display: none; }
-      .hero-scroll { display: none; }
-    }
-    @media (max-width: 600px) {
-      .news-grid { grid-template-columns: 1fr; }
-      .ig-grid { grid-template-columns: repeat(2,1fr); }
-      .haeuser-grid { grid-template-columns: 1fr; }
-      .haus-card:first-child { grid-column: span 1; }
-      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
-      .ueber-stats { flex-wrap: wrap; gap: 24px; }
-    }
   </style>
 </head>
+
+
+
+
 <body>
+
 
 <!-- ─── NAV ─── -->
 <nav id="navbar">
@@ -645,7 +691,6 @@
 
 <!-- ─── MOSAIK ─── -->
 <div class="mosaik">
-
   <!-- Zeile 1 -->
   <div class="mosaik-zelle mosaik-z1">
     <div class="mosaik-text">
@@ -654,11 +699,9 @@
       Für<br>Ideen<br>ohne<br>Grenzen
     </div>
   </div>
-
   <div class="mosaik-zelle mosaik-z2">
     <img src="bilder/foto1.jpg" alt="Eigenes Bild einfügen" />
   </div>
-
   <div class="mosaik-zelle mosaik-z3">
     <div class="mosaik-text">
       Für<br>Kreative<br>Köpfe<br><br>
@@ -666,7 +709,6 @@
       Für<br>Kreative<br>Köpfe
     </div>
   </div>
-
   <!-- Zeile 2 -->
   <div class="mosaik-zelle mosaik-z4">
     <img src="bilder/foto2.jpg" alt="Eigenes Bild einfügen" />
@@ -674,17 +716,14 @@
       Für<br>ein<br>auf<br>Augen-<br>höhe
     </div>
   </div>
-
   <div class="mosaik-zelle mosaik-z5">
     <div class="mosaik-text">
       Für<br>Kreative<br>Freiheit
     </div>
   </div>
-
   <div class="mosaik-zelle mosaik-z6">
     <img src="bilder/foto3.jpg" alt="Eigenes Bild einfügen" />
   </div>
-
 </div>
 
 
@@ -692,7 +731,6 @@
 <div class="news-section">
   <h2>News</h2>
   <div class="news-grid">
-
     <div class="news-card">
       <div class="news-card-img">
         Eigenes Bild einfügen
@@ -703,7 +741,6 @@
         <a href="#" class="news-mehr">Mehr »</a>
       </div>
     </div>
-
     <div class="news-card">
       <div class="news-card-img">
         Eigenes Bild einfügen
@@ -714,7 +751,6 @@
         <a href="#" class="news-mehr">Mehr »</a>
       </div>
     </div>
-
     <div class="news-card">
       <div class="news-card-img">
         Eigenes Bild einfügen
@@ -725,7 +761,6 @@
         <a href="#" class="news-mehr">Mehr »</a>
       </div>
     </div>
-
     <div class="news-card">
       <div class="news-card-img">
         Eigenes Bild einfügen
@@ -736,7 +771,6 @@
         <a href="#" class="news-mehr">Mehr »</a>
       </div>
     </div>
-
     <div class="news-card">
       <div class="news-card-img">
         Eigenes Bild einfügen
@@ -747,7 +781,6 @@
         <a href="#" class="news-mehr">Mehr »</a>
       </div>
     </div>
-
     <div class="news-card">
       <div class="news-card-img">
         Eigenes Bild einfügen
@@ -758,7 +791,6 @@
         <a href="#" class="news-mehr">Mehr »</a>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -767,17 +799,14 @@
 <div class="instagram-section">
   <h2>NEUES BEI<br>INSTAGRAM</h2>
   <div class="ig-new-grid">
-
     <div class="ig-new-item">Eigenes Bild einfügen</div>
     <div class="ig-new-item">Eigenes Bild einfügen</div>
     <div class="ig-new-item">Eigenes Bild einfügen</div>
     <div class="ig-new-item">Eigenes Bild einfügen</div>
-
     <div class="ig-new-item">Eigenes Bild einfügen</div>
     <div class="ig-new-item">Eigenes Bild einfügen</div>
     <div class="ig-new-item">Eigenes Bild einfügen</div>
     <div class="ig-new-item">Eigenes Bild einfügen</div>
-
   </div>
   <div class="ig-new-footer">
     <a href="#" class="ig-new-btn">Weitere Beiträge anzeigen</a>
@@ -792,13 +821,13 @@
   </div>
 </div>
 
+
 <!-- ─── FOOTER NEU ─── -->
 <footer class="footer-neu">
   <a href="ehem-kohlenhofareal-grombühl.html" class="footer-neu-logo">
     <div class="logo-mark"></div>
     <div class="logo-text">EHEM.<br>KOHLENHOF<br>GROMBÜHL</div>
   </a>
-
   <ul class="footer-neu-nav">
     <li><a href="quartier/frame.html">FRAME</a></li>
     <li><a href="quartier/pulse.html">PULSE</a></li>
@@ -806,10 +835,9 @@
     <li><a href="quartier/deck.html">DECK</a></li>
     <li><a href="quartier/forum.html">FORUM</a></li>
   </ul>
-
   <div class="footer-neu-legal">
-    <a href="#">Impressum</a>
-    <a href="#">Datenschutz</a>
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
   </div>
 </footer>
 
@@ -820,13 +848,11 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 60);
   });
-
   // Scroll-reveal
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.13 });
   document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
-
   // Mobile nav
   const hamburger = document.getElementById('hamburger');
   const links = document.getElementById('navLinks');
@@ -843,39 +869,33 @@
       links.style.cssText = '';
     }
   });
-
 // Slideshow
   const slides = document.querySelectorAll('.slide');
   let current = 0;
-
-  // Erstes Bild sofort sichtbar
+// Erstes Bild sofort sichtbar
   slides[0].classList.add('active');
-
   setInterval(() => {
     const next = (current + 1) % slides.length;
-
-    // Nächstes Bild von rechts bereitstellen
-    slides[next].style.transform = 'translateX(100%)';
-    slides[next].style.transition = 'none';
-    slides[next].classList.add('active');
-
-    // Kurz warten dann beide animieren
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        slides[next].style.transition = 'transform .8s ease-in-out';
-        slides[next].style.transform = 'translateX(0%)';
-        slides[current].style.transition = 'transform .8s ease-in-out';
-        slides[current].style.transform = 'translateX(-100%)';
+// Nächstes Bild von rechts bereitstellen
+  slides[next].style.transform = 'translateX(100%)';
+  slides[next].style.transition = 'none';
+  slides[next].classList.add('active');
+// Kurz warten dann beide animieren
+  requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
+    slides[next].style.transition = 'transform .8s ease-in-out';
+    slides[next].style.transform = 'translateX(0%)';
+    slides[current].style.transition = 'transform .8s ease-in-out';
+    slides[current].style.transform = 'translateX(-100%)';
       });
     });
-
-    // Altes Bild nach Animation aufräumen
-    setTimeout(() => {
-      slides[current].classList.remove('active');
-      slides[current].style.transform = 'translateX(100%)';
-      slides[current].style.transition = 'none';
-      current = next;
-    }, 850);
+// Altes Bild nach Animation aufräumen
+  setTimeout(() => {
+    slides[current].classList.remove('active');
+    slides[current].style.transform = 'translateX(100%)';
+    slides[current].style.transition = 'none';
+    current = next;
+  }, 850);
 
   }, 5000);
 </script>

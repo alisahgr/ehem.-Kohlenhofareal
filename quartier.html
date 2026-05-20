@@ -1,441 +1,620 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
+ <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quartier – Kreativ Quartier Potsdam</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <title>Ehem. Kohlenhofareal Grombühl</title>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: #fff; color: #1a1a1a; overflow-x: hidden; }
 
     :root {
-      --orange: #E8571A;
-      --purple: #5A2D82;
-      --purple-dark: #3a1a5e;
+      --gelb: 244, 210, 66;
+      --rot: 196, 95, 63;
+      --lachs: 255, 192, 192;
+      --rosa: 242, 156, 195;
+      --lila: 207, 203, 232;
+      --blau: 128, 176, 232;
+      --grün1: 137, 142, 70;
+      --grün2: 214, 211, 95;
+      --türkis: 0, 132, 113;
       --white: #FFFFFF;
       --off-white: #F5F3EE;
       --dark: #1a1a1a;
       --gray: #888;
     }
 
-    /* ── NAV (from Startseite) ── */
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--off-white);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      right: 0; 
+      z-index: 100;
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between;
       padding: 20px 48px;
       background: transparent;
       transition: background .3s;
     }
-    nav.scrolled { background: rgba(26,10,50,.94); backdrop-filter: blur(14px); }
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .logo-mark { width: 34px; height: 34px; background: var(--orange); border-radius: 50%; flex-shrink: 0; }
-    .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; color: var(--white); letter-spacing: .07em; line-height: 1.15; }
-    .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
-    .nav-links a { color: var(--white); text-decoration: none; font-size: .82rem; font-weight: 400; letter-spacing: .06em; text-transform: uppercase; position: relative; }
-    .nav-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; right: 0; height: 1px; background: var(--orange); transform: scaleX(0); transition: transform .25s; }
-    .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
-    .dropdown { position: relative; }
-    .dropdown-menu { display: none; position: absolute; top: 140%; left: 0; background: var(--purple-dark); min-width: 170px; padding: 10px 0; border-top: 2px solid var(--orange); list-style: none; }
-    .dropdown:hover .dropdown-menu { display: block; }
-    .dropdown-menu a { display: block; padding: 8px 18px; font-size: .8rem; text-transform: none; letter-spacing: 0; color: rgba(255,255,255,.8); }
-    .dropdown-menu a::after { display: none !important; }
-    .dropdown-menu a:hover { background: rgba(255,255,255,.07); color: var(--orange); }
-    .nav-cta { background: var(--orange) !important; color: var(--white) !important; padding: 10px 22px !important; }
-    .nav-cta::after { display: none !important; }
-    .nav-cta:hover { background: #c9461a !important; }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-    .hamburger span { width: 26px; height: 2px; background: var(--white); display: block; }
-
-    /* ── HERO ── */
-    .hero {
+    nav.scrolled { 
+      background: rgba(255,255,255,.50); 
+      backdrop-filter: blur(14px); 
+    }
+    .nav-logo { 
+      display: flex; 
+      align-items: center; 
+      gap: 10px; 
+      text-decoration: none; 
+    }
+    .logo-mark { 
+      width: 34px; 
+      height: 34px; 
+      background: rgba(var(--grün2), 1); 
+      border-radius: 50%; 
+      flex-shrink: 0; 
+    }
+    .logo-text {
+      font-family: 'Archivo Black', sans-serif; 
+      font-size: 1rem;
+      color: rgba(var(--grün2), 1); 
+      letter-spacing: .07em; 
+      line-height: 1.15;
+    }
+    .nav-links { 
+      display: flex; 
+      gap: 32px; 
+      list-style: none; 
+      align-items: center; 
+    }
+    .nav-links a {
+      color: rgba(var(--grün2), 1); 
+      text-decoration: none;
+      font-size: 1rem; 
+      font-weight: 400; 
+      letter-spacing: .06em;
+      text-transform: uppercase; 
       position: relative;
-      background: linear-gradient(155deg, var(--purple-dark) 0%, var(--purple) 50%, #7832b8 100%);
-      padding: 160px 48px 80px;
-      overflow: hidden;
     }
-    .hero-grid {
-      position: absolute; inset: 0; opacity: .05;
-      background-image:
-        repeating-linear-gradient(0deg, white 0, white 1px, transparent 1px, transparent 64px),
-        repeating-linear-gradient(90deg, white 0, white 1px, transparent 1px, transparent 64px);
+    .nav-links a::after {
+      content: ''; 
+      position: absolute; 
+      bottom: -3px; left: 0; right: 0;
+      height: 1px; 
+      background: rgba(var(--grün2), 1);
+      transform: scaleX(0); 
+      transition: transform .25s;
     }
-    .hero-content { position: relative; z-index: 1; max-width: 780px; }
-    .hero h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.8rem, 6vw, 5.5rem);
-      color: var(--white); line-height: .95; margin-bottom: 24px;
+    .nav-links a:hover::after { 
+      transform: scaleX(1); 
     }
-    .hero p {
-      color: rgba(255,255,255,.65); font-size: 1.05rem; font-weight: 300;
-      line-height: 1.75; max-width: 600px;
+    .dropdown { 
+      position: relative; 
+    }
+    .dropdown-menu {
+      display: none; 
+      position: absolute; 
+      top: 160%; left: 0;
+      background: rgba(var(--rosa), 1); 
+      min-width: 170px;
+    }
+    .dropdown-menu::before {
+      content: '';
+      position: absolute;
+      top: -20px;        
+      left: 0; right: 0;
+      height: 20px;      
+      background: transparent;
+    }
+    .dropdown:hover .dropdown-menu { 
+      display: block; 
+    }
+    .dropdown-menu a {
+      display: block; 
+      padding: 8px 18px; 
+      font-size: 1rem;
+      text-transform: none; 
+      letter-spacing: 0; 
+      color: rgba(var(--grün2), 1);
+    }
+    .dropdown-menu a::after { 
+      display: none; 
+    }
+    .dropdown-menu a:hover { 
+      background: rgba(var(--grün2), 1);
+      color: rgba(var(--rosa), 1); 
+      text-decoration: underline; 
+    }
+    .nav-cta {
+      background: var(--white) !important;
+      color: var(--white) !important;
+      padding: 10px 22px !important;
+    }
+    .nav-cta::after { 
+      display: none !important; 
+    }
+    .nav-cta:hover { 
+      background: #c9461a !important; 
+    }
+    .hamburger { 
+      display: none; 
+      flex-direction: column;
+      gap: 5px; 
+      cursor: pointer; 
+      background: none; 
+      border: none; 
+      padding: 4px; 
+    }
+    .hamburger span { 
+      width: 26px; 
+      height: 2px; 
+      background: var(--white); 
+      display: block; 
+      transition: .3s; 
     }
 
-    /* ── VIDEO PLACEHOLDER ── */
-    .video-section { background: var(--dark); }
-    .video-placeholder {
-      width: 100%; aspect-ratio: 16/9; max-height: 600px;
-      background: #111;
-      display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 16px;
+
+    /* ── QUARTIER HERO ── */
+    .quartier-hero {
+      background: rgba(var(--rosa), 1);
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 48px;
     }
-    .video-placeholder .play-icon {
-      width: 72px; height: 72px; border-radius: 50%;
-      border: 2px solid rgba(255,255,255,.3);
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,.5); font-size: 1.6rem;
-    }
-    .video-placeholder p {
-      font-size: .75rem; letter-spacing: .15em; text-transform: uppercase;
-      color: rgba(255,255,255,.3);
+    .quartier-hero h1 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(4rem, 8vw, 8rem);
+      color: rgba(var(--grün2), 1);
+      line-height: 1.0;
+      text-transform: uppercase;
+      max-width: 70%;
     }
 
-    /* ── EIN ORT FÜR ── */
-    .ein-ort {
-      background: var(--off-white);
-      padding: 80px 48px;
+    @media (max-width: 700px) {
+      .quartier-hero { padding: 32px 24px; }
+      .quartier-hero h1 { font-size: 3.5rem; max-width: 100%; }
     }
-    .ein-ort-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      color: var(--dark); margin-bottom: 36px;
-      overflow: hidden; white-space: nowrap;
-    }
-    /* scrolling duplicate of the heading */
-    .ein-ort-ticker { overflow: hidden; margin-bottom: 36px; }
-    .ein-ort-ticker-inner {
-      display: inline-flex; gap: 60px; white-space: nowrap;
-      animation: tickerL 22s linear infinite;
-    }
-    .ein-ort-ticker-item {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(1.8rem, 4vw, 3rem); color: var(--dark);
-      flex-shrink: 0;
-    }
-    @keyframes tickerL { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    .ein-ort-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-    .ein-ort-list { list-style: none; }
-    .ein-ort-list li {
-      padding: 14px 0; border-bottom: 1px solid #ddd;
-      font-size: 1.05rem; color: var(--dark); font-weight: 300;
+
+    /* ── QUARTIER BESCHREIBUNG ── */
+    .quartier-beschreibung {
+      background: rgba(var(--rosa), 1);
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      padding: 48px;
     }
-    .ein-ort-list li:first-child { border-top: 1px solid #ddd; }
-    .ein-ort-houses { display: flex; flex-wrap: wrap; gap: 10px; align-content: flex-start; padding-top: 4px; }
-    .house-pill {
-      display: inline-block; padding: 10px 22px;
-      border: 1px solid var(--dark); color: var(--dark);
-      text-decoration: none; font-size: .8rem; letter-spacing: .06em;
-      text-transform: uppercase; transition: all .2s;
+    .quartier-beschreibung h1 {
+      font-size: 1.2rem;
+      color: rgba(var(--grün2), 1);
+      line-height: 1.0;
     }
-    .house-pill:hover { background: var(--orange); border-color: var(--orange); color: var(--white); }
+
+    @media (max-width: 700px) {
+      .quartier-beschreibung { padding: 32px 24px; }
+      .quartier-beschreibung h1 { font-size: 1.2rem; max-width: 100%; }
+    }
+
+
+    /* ── QUARTIER EIN ORT FÜR ── */
+    .quartier-ein-ort-für {
+      background: rgba(var(--rosa), 0.25);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+      padding-top: 75px;
+    }
+    .quartier-ein-ort-für-left {
+      padding: 60px 48px;
+      display: flex;
+      align-items: flex-start;
+    }
+    .quartier-ein-ort-für-left h1 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(4rem, 8vw, 8rem);
+      color: rgba(var(--rosa), 1);
+      line-height: 1.0;
+      text-transform: uppercase;
+      word-break: break-word; 
+    }
+    .quartier-ein-ort-für-right {
+      padding: 60px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .quartier-ein-ort-für-right h2 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 3rem;
+      color: rgba(var(--rosa), 1);
+      line-height: 1.2;
+      font-weight: 300;
+    }
+
+    @media (max-width: 900px) {
+      .quartier-ein-ort-für { grid-template-columns: 1fr; }
+      .quartier-ein-ort-für-left { padding: 48px 24px 24px; }
+      .quartier-ein-ort-für-right { padding: 24px 24px 48px; }
+    }
+
+
+    /* ── QUARTIER HÄUSER LISTE ── */
+    .q-haus-entry {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      align-items: start;
+      padding: 60px 48px;
+      gap: 48px;
+      min-height: 450px;
+    }
+    .q-haus-left h2 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(3rem, 10vw, 10rem);
+      line-height: 1.0;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .q-haus-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 20px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 600;
+      min-width: 320px;
+      transition: opacity .2s;
+    }
+    .q-haus-link:hover { 
+      text-decoration: underline;
+    }
+    .q-haus-img {
+     width: 100%;
+     aspect-ratio: 3/2;
+     object-fit: cover;
+     display: block;
+     align-items: start;
+    }
+    .q-haus-img-placeholder {
+      width: 100%;
+      aspect-ratio: 3/2;
+      background: #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #aaa;
+    }
+
+    /* Farben je Haus */
+    .q-haus-1 { background: rgba(var(--lachs), 0.25); }
+    .q-haus-1 h2 { color: rgba(var(--lachs), 1); }
+    .q-haus-1 .q-haus-link { background: rgba(var(--lachs), 1); color: rgba(255,255,255, 0.75); border: 1px solid rgba(var(--lachs), 0.25); }
+    .q-haus-1 { transition: background .3s; }
+    .q-haus-1:hover { background: rgba(var(--lachs), 1); }
+    .q-haus-1:hover h2 { color: rgba(255,255,255, 0.75); }
+    .q-haus-1:hover .q-haus-link { border-color: rgba(255,255,255, 0.75); }
+
+    .q-haus-2 { background: rgba(var(--blau), 0.25); }
+    .q-haus-2 h2 { color: rgba(var(--blau), 1); }
+    .q-haus-2 .q-haus-link { background: rgba(var(--blau), 1); color: var(--white); border: 1px solid rgba(var(--blau), 0.25); }
+    .q-haus-2 { transition: background .3s; }
+    .q-haus-2:hover { background: rgba(var(--blau), 1); }
+    .q-haus-2:hover h2 { color: rgba(255,255,255, 0.75); }
+    .q-haus-2:hover .q-haus-link { border-color: rgba(255,255,255, 0.75); }
+
+    .q-haus-3 { background: rgba(var(--rot), 0.25); }
+    .q-haus-3 h2 { color: rgba(var(--rot), 1); }
+    .q-haus-3 .q-haus-link { background: rgba(var(--rot), 1); color: var(--white); border: 1px solid rgba(var(--rot), 0.25); }
+    .q-haus-3 { transition: background .3s; }
+    .q-haus-3:hover { background: rgba(var(--rot), 1); }
+    .q-haus-3:hover h2 { color: rgba(255,255,255, 0.75); }
+    .q-haus-3:hover .q-haus-link { border-color: rgba(255,255,255, 0.75); }
+
+    .q-haus-4 { background: rgba(var(--gelb), 0.25); }
+    .q-haus-4 h2 { color: rgba(var(--gelb), 1); }
+    .q-haus-4 .q-haus-link { background: rgba(var(--gelb), 1); color: var(--white); border: 1px solid rgba(var(--gelb), 0.25); }
+    .q-haus-4 { transition: background .3s; }
+    .q-haus-4:hover { background: rgba(var(--gelb), 1); }
+    .q-haus-4:hover h2 { color: rgba(255,255,255, 0.75); }
+    .q-haus-4:hover .q-haus-link { border-color: rgba(255,255,255, 0.75); }
+
+    .q-haus-5 { background: rgba(var(--lila), 0.4); }
+    .q-haus-5 h2 { color: rgba(var(--lila), 1); }
+    .q-haus-5 .q-haus-link { background: rgba(var(--lila), 1); color: var(--white); border: 1px solid rgba(var(--lila), 0.25); }
+    .q-haus-5 { transition: background .3s; }
+    .q-haus-5:hover { background: rgba(var(--lila), 1); }
+    .q-haus-5:hover h2 { color: rgba(255,255,255, 0.75); }
+    .q-haus-5:hover .q-haus-link { border-color: rgba(255,255,255, 0.75); }
+
+    @media (max-width: 900px) {
+    .q-haus-entry {grid-template-columns: 1fr; padding: 40px 24px;}
+    .q-haus-link { min-width: 100%; }
+    }
+
 
     /* ── HAUS CARDS ── */
-    .haeuser-section { background: var(--white); }
+    .haeuser-section { 
+      background: var(--white); 
+    }
     .haus-entry {
-      display: grid; grid-template-columns: 1fr 1fr;
+      display: grid; 
+      grid-template-columns: 1fr 1fr;
       border-bottom: 1px solid #eee;
     }
-    .haus-entry:nth-child(even) { direction: rtl; }
-    .haus-entry:nth-child(even) > * { direction: ltr; }
-    .haus-img-wrap { position: relative; aspect-ratio: 3/2; overflow: hidden; }
+    .haus-entry:nth-child(even) { 
+      direction: rtl; 
+    }
+    .haus-entry:nth-child(even) > * { 
+      direction: ltr; 
+    }
+    .haus-img-wrap { 
+      position: relative; 
+      aspect-ratio: 3/2;   
+      overflow: hidden; 
+    }
     .haus-img-placeholder {
-      position: absolute; inset: 0; background: #e0dcd5;
-      display: flex; align-items: center; justify-content: center;
-      font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: #aaa;
+      position: absolute; 
+      inset: 0; 
+      background: #e0dcd5;
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      font-size: .7rem; 
+      letter-spacing: .12em; 
+      text-transform: uppercase; 
+      color: #aaa;
       transition: transform .5s ease;
     }
-    .haus-entry:hover .haus-img-placeholder { transform: scale(1.04); }
+    .haus-entry:hover .haus-img-placeholder { 
+      transform: scale(1.04); 
+    }
     .haus-text {
       padding: 56px 52px;
-      display: flex; flex-direction: column; justify-content: center;
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center;
     }
     .haus-text h2 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.4rem, 4vw, 3.8rem); color: var(--dark);
-      line-height: .95; margin-bottom: 16px;
+      font-size: clamp(2.4rem, 4vw, 3.8rem); 
+      color: var(--dark);
+      line-height: .95; 
+      margin-bottom: 16px;
     }
     .haus-text a {
-      display: inline-block; color: var(--orange); text-decoration: none;
-      font-size: .9rem; font-weight: 400; border-bottom: 1px solid var(--orange);
-      padding-bottom: 2px; transition: color .2s;
+      display: inline-block; 
+      color: var(--orange); 
+      text-decoration: none;
+      font-size: .9rem; 
+      font-weight: 400; 
+      border-bottom: 1px solid var(--orange);
+      padding-bottom: 2px; 
+      transition: color .2s;
     }
-    .haus-text a:hover { color: var(--purple); border-color: var(--purple); }
-
-    /* ── BEIRAT ── */
-    .beirat-section { padding: 88px 48px; background: var(--off-white); }
-    .beirat-section h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2rem, 4vw, 3.2rem); color: var(--dark);
-      margin-bottom: 28px;
-    }
-    .beirat-section p {
-      color: #444; line-height: 1.82; font-weight: 300; font-size: .98rem;
-      max-width: 780px; margin-bottom: 16px;
-    }
-    .beirat-img-wrap { margin-top: 40px; }
-    .beirat-img-placeholder {
-      width: 100%; aspect-ratio: 16/7; background: #e0dcd5;
-      display: flex; align-items: center; justify-content: center;
-      font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: #aaa;
-    }
-    .beirat-caption {
-      font-size: .75rem; color: var(--gray); margin-top: 10px;
-      line-height: 1.6; font-style: italic; max-width: 900px;
+    .haus-text a:hover { 
+      color: var(--purple); 
+      border-color: var(--purple); 
     }
 
-    /* ── FOOTER (from Startseite) ── */
-    footer { background: #111; color: rgba(255,255,255,.45); padding: 64px 48px 36px; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 56px; }
-    .footer-brand { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
-    .footer-brand .logo-mark { width: 28px; height: 28px; }
-    .footer-brand .logo-text { font-size: .85rem; color: rgba(255,255,255,.65); }
-    .footer-desc { font-size: .85rem; line-height: 1.75; max-width: 260px; }
-    .f-col-title { font-family: 'Bebas Neue', sans-serif; font-size: .95rem; letter-spacing: .09em; color: var(--white); margin-bottom: 14px; }
-    .f-col ul { list-style: none; }
-    .f-col ul li { margin-bottom: 7px; }
-    .f-col a { color: rgba(255,255,255,.4); text-decoration: none; font-size: .83rem; transition: color .2s; }
-    .f-col a:hover { color: var(--orange); }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,.07); padding-top: 26px; display: flex; justify-content: space-between; align-items: center; font-size: .72rem; letter-spacing: .04em; }
-    .footer-bottom-links { display: flex; gap: 22px; }
-    .footer-bottom-links a { color: rgba(255,255,255,.3); text-decoration: none; }
-    .footer-bottom-links a:hover { color: var(--orange); }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 960px) {
-      nav { padding: 16px 24px; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .hero { padding: 120px 24px 60px; }
-      .ein-ort { padding: 60px 24px; }
-      .ein-ort-grid { grid-template-columns: 1fr; gap: 36px; }
-      .haus-entry { grid-template-columns: 1fr; direction: ltr !important; }
-      .haus-entry:nth-child(even) { direction: ltr; }
-      .haus-text { padding: 36px 24px; }
-      .beirat-section { padding: 60px 24px; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      footer { padding: 48px 24px 32px; }
+    /* ── FOOTER NEU ── */
+    .footer-neu {
+      background-color: rgba(var(--rosa), 1);
+      padding: 80px 48px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-height: 100vh;
+      justify-content: space-between;
     }
+    .footer-neu-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      margin-bottom: 60px;
+    }
+    .footer-neu-logo .logo-mark {
+      width: 52px;
+      height: 52px;
+      background: rgba(var(--grün2), 1);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .footer-neu-logo .logo-text {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.1rem;
+      color: var(--white);
+      letter-spacing: .07em;
+      line-height: 1.15;
+      text-align: left;
+    }
+    .footer-neu-nav {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: auto;
+    }
+    .footer-neu-nav a {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: .02em;
+      transition: color .2s;
+    }
+    .footer-neu-nav a:hover {
+      color: rgba(var(--grün2), 1);
+      text-decoration: underline;
+    }
+    .footer-neu-legal {
+      display: flex;
+      gap: 32px;
+      margin-top: 60px;
+    }
+    .footer-neu-legal a {
+      color: rgba(255,255,255,.6);
+      text-decoration: none;
+      font-size: .9rem;
+      transition: color .2s;
+    }
+    .footer-neu-legal a:hover {
+      color: var(--white);
+    }
+
     @media (max-width: 600px) {
-      .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+      .footer-neu { padding: 60px 24px 40px; }
+      .footer-neu-nav a { font-size: 1.8rem; }
     }
+
   </style>
 </head>
 <body>
 
-<!-- ─── NAV (from Startseite) ─── -->
+
+<!-- ─── NAV ─── -->
 <nav id="navbar">
-  <a href="ehem-kohlenhofareal-grombühl.html" class="nav-logo">
+  <a href="index.html" class="nav-logo">
     <div class="logo-mark"></div>
-    <div class="logo-text">KREATIV<br>QUARTIER<br>POTSDAM</div>
+    <div class="logo-text">EHEM.<br>KOHLENHOF<br>GROMBÜHL</div>
   </a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="index.html">Startseite</a></li>
+    <li><a href="index.html">STARTSEITE</a></li>
     <li class="dropdown">
-      <a href="quartier.html" class="active">Quartier ▾</a>
-      <ul class="dropdown-menu">
-        <li><a href="quartier/frame.html">Frame</a></li>
-        <li><a href="quartier/pulse.html">Pulse</a></li>
-        <li><a href="quartier/leuchtturm.html">Leuchtturm</a></li>
-        <li><a href="quartier/deck.html">Deck</a></li>
-        <li><a href="quartier/forum.html">Forum</a></li>
-      </ul>
+      <a href="quartier.html">QUARTIER ▾</a>
+      <div class="dropdown-menu">
+        <a href="quartier/frame.html">FRAME</a>
+        <a href="quartier/pulse.html">PULSE</a>
+        <a href="quartier/leuchtturm.html">LEUCHTTURM</a>
+        <a href="quartier/deck.html">DECK</a>
+        <a href="quartier/forum.html">FORUM</a>
+      </div>
     </li>
-    <li><a href="kontakt.html">Kontakt</a></li>
+    <li><a href="kontakt.html">KONTAKT</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- ─── HERO ─── -->
-<div class="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-content">
-    <h1>Lebendige neue Räume für Kreative</h1>
-    <p>Mitten in Potsdam entsteht das KREATIV QUARTIER POTSDAM: 25.000 m² in sieben Gebäuden – mit Offices, Ateliers, Studios, Läden, Proberäumen und Cafés.</p>
-    <p style="margin-top:14px;">Ein lebendiger Ort für kreative Unternehmen, Künstler:innen und Macher:innen.<br>Zum Arbeiten. Zum Vernetzen. Zum Wachsen. Gemeinsam.</p>
-  </div>
+
+<!-- ─── QUARTIER HERO ─── -->
+<div class="quartier-hero">
+  <h1>Lebendige<br>neue Räume<br>für<br>Kreative</h1>
 </div>
 
-<!-- ─── VIDEO PLACEHOLDER ─── -->
-<div class="video-section">
-  <div class="video-placeholder">
-    <div class="play-icon">▶</div>
-    <p>Eigenes Video einfügen</p>
-  </div>
+
+<!-- ─── QUARTIER BESCHREIBUNG ─── -->
+<div class="quartier-beschreibung">
+  <h1>Mitten in Grombühl entsteht das EHEMALIGE KOHLENHOFAREAL GROMBÜHL: xx.xxxm² in fünf Gebäuden - mit xxx. </h1>
+  <h1>Beschreibung. </h1>
 </div>
 
-<!-- ─── EIN ORT FÜR ─── -->
-<div class="ein-ort">
-  <div class="ein-ort-ticker">
-    <div class="ein-ort-ticker-inner">
-      <span class="ein-ort-ticker-item">Ein Ort für</span>
-      <span class="ein-ort-ticker-item">Ein Ort für</span>
-      <span class="ein-ort-ticker-item">Ein Ort für</span>
-      <span class="ein-ort-ticker-item">Ein Ort für</span>
-      <span class="ein-ort-ticker-item">Ein Ort für</span>
-      <span class="ein-ort-ticker-item">Ein Ort für</span>
-      <span class="ein-ort-ticker-item">Ein Ort für</span>
-      <span class="ein-ort-ticker-item">Ein Ort für</span>
-      <span class="ein-ort-ticker-item">Ein Ort für</span>
-      <span class="ein-ort-ticker-item">Ein Ort für</span>
-      <span class="ein-ort-ticker-item">Ein Ort für</span>
-      <span class="ein-ort-ticker-item">Ein Ort für</span>
-    </div>
+
+<!-- ─── QUARTIER EIN ORT FÜR ─── -->
+<div class="quartier-ein-ort-für">
+  <div class="quartier-ein-ort-für-left">
+    <h1>EIN ORT<br>FÜR<br>EIN ORT<br>FÜR<br>EIN ORT<br>FÜR</h1>
   </div>
-  <div class="ein-ort-grid">
-    <ul class="ein-ort-list">
-      <li>Musik</li>
-      <li>Design</li>
-      <li>Architektur</li>
-      <li>Darstellende Kunst</li>
-      <li>Bildende Kunst</li>
-      <li>Buchmarkt</li>
-      <li>Film</li>
-      <li>Rundfunk</li>
-      <li>Presse</li>
-      <li>Werbung</li>
-      <li>Software &amp; Games</li>
-    </ul>
-    <div class="ein-ort-houses">
-      <a href="quartier/rack.html" class="house-pill">Rack</a>
-      <a href="quartier/orangerie.html" class="house-pill">Orangerie</a>
-      <a href="quartier/akademie.html" class="house-pill">Akademie</a>
-      <a href="quartier/musikhaus.html" class="house-pill">Musikhaus</a>
-      <a href="quartier/laterne.html" class="house-pill">Laterne</a>
-      <a href="quartier/townhouse.html" class="house-pill">Townhouse</a>
-      <a href="quartier/langer-stall.html" class="house-pill">Langer Stall</a>
-    </div>
-  </div>
-</div>
-
-<!-- ─── HÄUSER ─── -->
-<div class="haeuser-section">
-
-  <div class="haus-entry">
-    <div class="haus-img-wrap">
-      <div class="haus-img-placeholder">Eigenes Bild einfügen – Langer Stall</div>
-    </div>
-    <div class="haus-text">
-      <h2>Langer Stall</h2>
-      <a href="quartier/langer-stall.html">Gemeinsam unter einem Dach</a>
-    </div>
-  </div>
-
-  <div class="haus-entry">
-    <div class="haus-img-wrap">
-      <div class="haus-img-placeholder">Eigenes Bild einfügen – Rack</div>
-    </div>
-    <div class="haus-text">
-      <h2>Rack</h2>
-      <a href="quartier/rack.html">Das schönste Regal der Stadt</a>
-    </div>
-  </div>
-
-  <div class="haus-entry">
-    <div class="haus-img-wrap">
-      <div class="haus-img-placeholder">Eigenes Bild einfügen – Orangerie</div>
-    </div>
-    <div class="haus-text">
-      <h2>Orangerie</h2>
-      <a href="quartier/orangerie.html">Reif für gute Ideen</a>
-    </div>
-  </div>
-
-  <div class="haus-entry">
-    <div class="haus-img-wrap">
-      <div class="haus-img-placeholder">Eigenes Bild einfügen – Laterne</div>
-    </div>
-    <div class="haus-text">
-      <h2>Laterne</h2>
-      <a href="quartier/laterne.html">Strahlt von innen, wirkt nach außen</a>
-    </div>
-  </div>
-
-  <div class="haus-entry">
-    <div class="haus-img-wrap">
-      <div class="haus-img-placeholder">Eigenes Bild einfügen – Akademie</div>
-    </div>
-    <div class="haus-text">
-      <h2>Akademie</h2>
-      <a href="quartier/akademie.html">Wissen schafft Räume</a>
-    </div>
-  </div>
-
-  <div class="haus-entry">
-    <div class="haus-img-wrap">
-      <div class="haus-img-placeholder">Eigenes Bild einfügen – Townhouse</div>
-    </div>
-    <div class="haus-text">
-      <h2>Townhouse</h2>
-      <a href="quartier/townhouse.html">Der beste Eingang, für gute Geschäfte.</a>
-    </div>
-  </div>
-
-  <div class="haus-entry">
-    <div class="haus-img-wrap">
-      <div class="haus-img-placeholder">Eigenes Bild einfügen – Musikhaus</div>
-    </div>
-    <div class="haus-text">
-      <h2>Musikhaus</h2>
-      <a href="quartier/musikhaus.html">Bühne frei für Neues</a>
-    </div>
-  </div>
-
-</div>
-
-<!-- ─── BEIRAT ─── -->
-<div class="beirat-section">
-  <h2>Beirat</h2>
-  <p>Der Beirat sorgt dafür, dass das Quartier ein lebendiger Ort der Kreativwirtschaft mit einem bunten und inspirierenden Nutzungsmix wird. Er wählt aus den Bewerber:innen für die Flächen mit Mietpreis- und Nutzungsbindung aus und stimmt anhand eines Kriterienkatalogs über die zukünftigen Mieter:innen ab.</p>
-  <p>Der Beirat hat sich im Sommer 2023 mit 5 Stimmen konstituiert und eine Erweiterung für die Phase bis zur Eröffnung um weitere 4 Stimmen beschlossen.</p>
-  <div class="beirat-img-wrap">
-    <div class="beirat-img-placeholder">Eigenes Bild einfügen – Beirat Kreativ Quartier Potsdam</div>
-    <p class="beirat-caption">Beirat Kreativ Quartier Potsdam 2024; Foto: Karoline Wolf. V.l.n.r.: Patrick Ohst (Planer Stadtraum Mitte LHP), Katrin Hartmann (FB Kultur und Museum LHP), Brigitta Bungard (Vertreterin potentielle Nutzerschaft), Lisa Krone (Wirtschaftsförderung LHP), Christopher Weiß (Glockenweiß), Doreen Löwe (Kulturmanagerin und Beiratsvorsitzende), Andrea Eichholz (Ideal Versicherung), Dr. Birgit-Katharine Seemann (Fachbereichsleiterin Kultur und Museum LHP), Katja Dietrich-Kröck (MWAEK), Andrea Van der Bel (Glockenweiß), Jasdan Joerges (Vertreter potentielle Nutzerschaft), Frank Braun (Vertreter potentielle Nutzerschaft). Nicht im Bild: Fernanda Lange Boettcher (WFBB).</p>
-  </div>
-</div>
-
-<!-- ─── FOOTER (from Startseite) ─── -->
-<footer>
-  <div class="footer-grid">
+  <div class="quartier-ein-ort-für-right">
     <div>
-      <div class="footer-brand">
-        <div class="logo-mark"></div>
-        <div class="logo-text">KREATIV<br>QUARTIER<br>POTSDAM</div>
-      </div>
-      <p class="footer-desc">Das Quartier für kreative Vielfalt in Potsdams Mitte. 7 Häuser, unzählige Möglichkeiten – Grand Opening 04.09.2026.</p>
-    </div>
-    <div class="f-col">
-      <div class="f-col-title">Die Häuser</div>
-      <ul>
-        <li><a href="quartier/langer-stall.html">Langer Stall</a></li>
-        <li><a href="quartier/rack.html">Rack</a></li>
-        <li><a href="quartier/orangerie.html">Orangerie</a></li>
-        <li><a href="quartier/laterne.html">Laterne</a></li>
-        <li><a href="quartier/akademie.html">Akademie</a></li>
-        <li><a href="quartier/townhouse.html">Townhouse</a></li>
-        <li><a href="quartier/musikhaus.html">Musikhaus</a></li>
-      </ul>
-    </div>
-    <div class="f-col">
-      <div class="f-col-title">Rechtliches</div>
-      <ul>
-        <li><a href="#">Impressum</a></li>
-        <li><a href="#">Datenschutz</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-      </ul>
+      <h2>Gewerbe<br>Wohnen<br>Mobilität<br>Sport</h2>
     </div>
   </div>
-  <div class="footer-bottom">
-    <span>© 2026 Kreativ Quartier Potsdam</span>
-    <div class="footer-bottom-links">
-      <a href="#">Impressum</a>
-      <a href="#">Datenschutz</a>
-    </div>
+</div>
+
+
+<!-- ─── QUARTIER HÄUSER ─── -->
+<div class="q-haus-entry q-haus-1">
+  <div class="q-haus-left">
+    <h2>Frame</h2>
+    <a href="quartier/frame.html" class="q-haus-link">
+      Ein guter Rahmen für urbanes Wohnen. ———→
+    </a>
+  </div>
+  <div class="q-haus-img-placeholder">Eigenes Bild einfügen – Frame</div>
+</div>
+
+<div class="q-haus-entry q-haus-2">
+  <div class="q-haus-left">
+    <h2>Pulse</h2>
+    <a href="quartier/pulse.html" class="q-haus-link">
+      Dynamik auf allen Ebenen. ———→
+    </a>
+  </div>
+  <div class="q-haus-img-placeholder">Eigenes Bild einfügen – Pulse</div>
+</div>
+
+<div class="q-haus-entry q-haus-3">
+  <div class="q-haus-left">
+    <h2>Leucht-<br>turm</h2>
+    <a href="quartier/leuchtturm.html" class="q-haus-link">
+      Strahlt von Innen, wirkt nach Außen. ———→
+    </a>
+  </div>
+  <div class="q-haus-img-placeholder">Eigenes Bild einfügen – Leuchtturm</div>
+</div>
+
+<div class="q-haus-entry q-haus-4">
+  <div class="q-haus-left">
+    <h2>Deck</h2>
+    <a href="quartier/deck.html" class="q-haus-link">
+      Mehr als ein Parkhaus. ———→
+    </a>
+  </div>
+  <div class="q-haus-img-placeholder">Eigenes Bild einfügen – Deck</div>
+</div>
+
+<div class="q-haus-entry q-haus-5">
+  <div class="q-haus-left">
+    <h2>Forum</h2>
+    <a href="quartier/forum.html" class="q-haus-link">
+      Slogan. ———→
+    </a>
+  </div>
+  <div class="q-haus-img-placeholder">Eigenes Bild einfügen – Forum</div>
+</div>
+
+
+<!-- ─── FOOTER NEU ─── -->
+<footer class="footer-neu">
+  <a href="ehem-kohlenhofareal-grombühl.html" class="footer-neu-logo">
+    <div class="logo-mark"></div>
+    <div class="logo-text">EHEM.<br>KOHLENHOF<br>GROMBÜHL</div>
+  </a>
+
+  <ul class="footer-neu-nav">
+    <li><a href="quartier/frame.html">FRAME</a></li>
+    <li><a href="quartier/pulse.html">PULSE</a></li>
+    <li><a href="quartier/leuchtturm.html">LEUCHTTURM</a></li>
+    <li><a href="quartier/deck.html">DECK</a></li>
+    <li><a href="quartier/forum.html">FORUM</a></li>
+  </ul>
+
+  <div class="footer-neu-legal">
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
   </div>
 </footer>
+
 
 <script>
   // Sticky nav
@@ -444,16 +623,63 @@
     nav.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // Hamburger
+  // Scroll-reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.13 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+  // Mobile nav
   const hamburger = document.getElementById('hamburger');
   const links = document.getElementById('navLinks');
   let open = false;
   hamburger.addEventListener('click', () => {
     open = !open;
-    links.style.cssText = open
-      ? 'display:flex;flex-direction:column;position:fixed;inset:0;background:rgba(26,0,50,.97);align-items:center;justify-content:center;gap:28px;z-index:99;padding:40px;'
-      : '';
+    if (open) {
+      links.style.cssText = `
+        display:flex; flex-direction:column; position:fixed; inset:0;
+        background:rgba(26,0,50,.97); align-items:center; justify-content:center;
+        gap:28px; z-index:99; padding:40px;
+      `;
+    } else {
+      links.style.cssText = '';
+    }
   });
+
+// Slideshow
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+
+  // Erstes Bild sofort sichtbar
+  slides[0].classList.add('active');
+
+  setInterval(() => {
+    const next = (current + 1) % slides.length;
+
+    // Nächstes Bild von rechts bereitstellen
+    slides[next].style.transform = 'translateX(100%)';
+    slides[next].style.transition = 'none';
+    slides[next].classList.add('active');
+
+    // Kurz warten dann beide animieren
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        slides[next].style.transition = 'transform .8s ease-in-out';
+        slides[next].style.transform = 'translateX(0%)';
+        slides[current].style.transition = 'transform .8s ease-in-out';
+        slides[current].style.transform = 'translateX(-100%)';
+      });
+    });
+
+    // Altes Bild nach Animation aufräumen
+    setTimeout(() => {
+      slides[current].classList.remove('active');
+      slides[current].style.transform = 'translateX(100%)';
+      slides[current].style.transition = 'none';
+      current = next;
+    }, 850);
+
+  }, 5000);
 </script>
 </body>
 </html>

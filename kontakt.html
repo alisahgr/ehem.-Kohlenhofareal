@@ -1,295 +1,700 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kontakt – Kreativ Quartier Potsdam</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"/>
+ <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ehem. Kohlenhofareal Grombühl</title>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: #fff; color: #1a1a1a; overflow-x: hidden; }
 
     :root {
-      --orange: #E8571A;
-      --purple: #5A2D82;
-      --purple-dark: #3a1a5e;
-      --off: #F5F3EE;
+      --gelb: 244, 210, 66;
+      --rot: 196, 95, 63;
+      --lachs: 255, 192, 192;
+      --rosa: 242, 156, 195;
+      --lila: 207, 203, 232;
+      --blau: 128, 176, 232;
+      --grün1: 137, 142, 70;
+      --grün2: 214, 211, 95;
+      --türkis: 0, 132, 113;
+      --white: #FFFFFF;
+      --off-white: #F5F3EE;
       --dark: #1a1a1a;
-      --gray: #666;
-      --border: #e0ddd8;
+      --gray: #888;
     }
 
-    /* ── NAV ── */
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--off-white);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+
+   /* ── NAV ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 18px 48px;
-      background: rgba(26,10,50,0);
+      padding: 20px 48px;
+      background: transparent;
       transition: background .3s;
     }
-    nav.scrolled { background: rgba(26,10,50,.95); backdrop-filter: blur(12px); }
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .logo-mark { width: 32px; height: 32px; background: var(--orange); border-radius: 50%; flex-shrink: 0; }
-    .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: .95rem; color: #fff; letter-spacing: .07em; line-height: 1.15; }
-    .nav-links { display: flex; gap: 30px; list-style: none; align-items: center; }
-    .nav-links > li > a { color: #fff; text-decoration: none; font-size: .8rem; letter-spacing: .07em; text-transform: uppercase; }
-    .nav-links > li > a:hover, .nav-links > li > a.active { color: var(--orange); }
-    .dropdown { position: relative; }
+    nav.scrolled { 
+      background: rgba(255,255,255,.50); 
+      backdrop-filter: blur(14px); 
+    }
+    .nav-logo { 
+      display: flex; 
+      align-items: center; 
+      gap: 10px; 
+      text-decoration: none; 
+    }
+    .logo-mark { 
+      width: 34px; 
+      height: 34px; 
+      background: rgba(var(--grün2), 1); 
+      border-radius: 50%; 
+      flex-shrink: 0; 
+    }
+    .logo-text {
+      font-family: 'Archivo Black', sans-serif; 
+      font-size: 1rem;
+      color: rgba(var(--grün2), 1); 
+      letter-spacing: .07em; 
+      line-height: 1.15;
+    }
+    .nav-links { 
+      display: flex; 
+      gap: 32px; 
+      list-style: none; 
+      align-items: center; 
+    }
+    .nav-links a {
+      color: rgba(var(--grün2), 1); 
+      text-decoration: none;
+      font-size: 1rem; 
+      font-weight: 400; 
+      letter-spacing: .06em;
+      text-transform: uppercase; 
+      position: relative;
+    }
+    .nav-links a::after {
+      content: ''; 
+      position: absolute; 
+      bottom: -3px; 
+      left: 0; 
+      right: 0;
+      height: 1px; 
+      background: rgba(var(--grün2), 1);
+      transform: scaleX(0); 
+      transition: transform .25s;
+    }
+    .nav-links a:hover::after { 
+      transform: scaleX(1); 
+    }
+    .dropdown { 
+      position: relative; 
+    }
     .dropdown-menu {
-      display: none; position: absolute; top: 130%; left: 0;
-      background: var(--purple-dark); min-width: 160px; list-style: none;
-      padding: 8px 0; border-top: 2px solid var(--orange); z-index: 300;
+      display: none; 
+      position: absolute; 
+      top: 160%; 
+      left: 0;
+      background: rgba(var(--rosa), 1); 
+      min-width: 170px;
     }
-    .dropdown:hover .dropdown-menu { display: block; }
-    .dropdown-menu li a {
-      display: block; padding: 8px 18px; font-size: .78rem;
-      color: rgba(255,255,255,.8); text-decoration: none;
+    .dropdown-menu::before {
+      content: '';
+      position: absolute;
+      top: -20px;        
+      left: 0; right: 0;
+      height: 20px;      
+      background: transparent;
     }
-    .dropdown-menu li a:hover { color: var(--orange); }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
-    .hamburger span { width: 24px; height: 2px; background: #fff; display: block; }
+    .dropdown:hover .dropdown-menu { 
+      display: block; 
+    }
+    .dropdown-menu a {
+      display: block; 
+      padding: 8px 18px; 
+      font-size: 1rem;
+      text-transform: none; 
+      letter-spacing: 0; 
+      color: rgba(var(--grün2), 1);
+    }
+    .dropdown-menu a::after { 
+      display: none; 
+    }
+    .dropdown-menu a:hover { 
+      background: rgba(var(--grün2), 1); 
+      color: rgba(var(--rosa), 1); 
+      text-decoration: underline; 
+    }
+    .nav-cta {
+      background: var(--white) !important; 
+      color: var(--white) !important;
+      padding: 10px 22px !important;
+    }
+    .nav-cta::after { 
+      display: none !important; 
+    }
+    .nav-cta:hover { 
+      background: #c9461a !important; 
+    }
+    .hamburger { 
+      display: none; 
+      flex-direction: column; 
+      gap: 5px; cursor: pointer;
+      background: none; 
+      border: none;   
+      padding: 4px; 
+    }
+    .hamburger span { 
+      width: 26px; 
+      height: 2px; 
+      background: var(--white); 
+      display: block; 
+      transition: .3s; 
+    }
 
-    /* ── PAGE INTRO (purple hero) ── */
-    .page-intro {
-      background: linear-gradient(155deg, var(--purple-dark) 0%, var(--purple) 55%, #7832b8 100%);
-      padding: 140px 48px 80px;
-      min-height: 50vh;
-      display: flex; flex-direction: column; justify-content: flex-end;
+
+    /* ── KONTAKT HEAD ── */
+    .kontakt-head-section {
+      background: rgba(var(--rosa), 0.25);
+      min-height: 100vh;
+      padding: 120px 48px 80px;
     }
-    .page-intro h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3rem, 7vw, 6rem);
-      color: #fff; line-height: .9; margin-bottom: 16px;
-    }
-    .page-intro p {
-      color: rgba(255,255,255,.65); font-size: 1.05rem; font-weight: 300;
-      max-width: 480px; line-height: 1.65;
+    .kontakt-head-section h1 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(4rem, 8vw, 8rem);
+      color: rgba(var(--rosa), 1);
+      text-transform: uppercase;
+      line-height: .95;
+      margin-top: 250px;
+      margin-bottom: 250px;
     }
 
-    /* ── MAIN CONTENT GRID ── */
-    .main-grid {
+    @media (max-width: 600px) {
+      .kontakt-head-section { padding: 100px 24px 60px; }
+      .kontakt-head-section h1 { margin-bottom: 60px; }
+    }
+
+
+    /* ── KONTAKT SEITE ── */
+    .kontakt-wrapper {
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 0;
-      background: #fff;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    .kontakt-seite,
+    .newsletter-section {
+      display: contents;
     }
 
-    /* ── CONTACT FORM COLUMN ── */
-    .form-col {
-      padding: 72px 56px 72px 48px;
-      border-right: 1px solid var(--border);
+    /* Spalte 1: Formular */
+    .kontakt-form-col {
+      background: rgba(var(--rosa), 1);
+      padding: 60px 40px 60px;
+      display: flex;
+      flex-direction: column;
     }
-    .form-col .form-group { margin-bottom: 20px; }
-    .form-col label {
-      display: block; font-size: .68rem; letter-spacing: .16em;
-      text-transform: uppercase; color: var(--gray); margin-bottom: 7px;
+    .kontakt-form-col form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
-    .form-col input,
-    .form-col textarea {
-      width: 100%; background: var(--off); border: 1px solid transparent;
-      color: var(--dark); padding: 13px 16px;
-      font-family: 'DM Sans', sans-serif; font-size: .92rem;
-      outline: none; transition: border-color .2s;
+    .kontakt-form-col .kf-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
-    .form-col input:focus,
-    .form-col textarea:focus { border-color: var(--orange); background: #fff; }
-    .form-col textarea { resize: vertical; min-height: 130px; }
-    .form-privacy {
-      font-size: .75rem; color: var(--gray); line-height: 1.65;
-      margin-bottom: 20px; max-width: 480px;
+    .kontakt-form-col label {
+      font-size: 1.2rem;
+      color: rgba(var(--grün2), 1);
     }
-    .btn-submit {
-      background: var(--orange); color: #fff; border: none;
-      padding: 14px 36px; font-family: 'DM Sans', sans-serif;
-      font-size: .8rem; letter-spacing: .1em; text-transform: uppercase;
-      font-weight: 500; cursor: pointer; transition: background .2s;
+    .kontakt-form-col label .required {
+      color: rgba(var(--grün2), 1);
+      margin-left: 4px;
     }
-    .btn-submit:hover { background: #c9461a; }
+    .kontakt-form-col input,
+    .kontakt-form-col textarea {
+      width: 100%;
+      background: var(--white);
+      border: 2px solid rgba(var(--grün2), 1);
+      color: rgba(var(--grün2), 1);
+      padding: 12px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.2rem;
+      outline: none;
+    }
+    .kontakt-form-col textarea {
+      resize: vertical;
+      min-height: 160px;
+    }
+    .kontakt-privacy {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 1.2rem;
+      color: rgba(var(--grün2), 1);
+      line-height: 1.6;
+      margin-top: 20px;
+    }
+    .kontakt-privacy input[type="checkbox"] {
+      width: auto;
+      margin-top: 3px;
+      flex-shrink: 0;
+      border: 1.5px solid rgba(var(--grün2), 1);
+    }
+    .kontakt-captcha-label {
+      font-size: 1.2rem;
+      color: rgba(var(--grün2), 1);
+    }
+    .kontakt-submit {
+      width: 100%;
+      background: rgba(var(--grün2), 1);
+      color: var(--white);
+      border: none;
+      padding: 16px;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background .2s;
+    }
 
-    /* ── ADDRESS COLUMN ── */
-    .address-col { padding: 72px 48px 72px 56px; }
-    .address-col h2 {
-      font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem;
-      margin-bottom: 20px; color: var(--dark);
+    /* Spalte 2: Bild */
+    .kontakt-img-col {
+      position: relative;
+      overflow: hidden;
     }
-    .address-col address {
-      font-style: normal; line-height: 2; font-size: .98rem; color: var(--dark);
-      font-weight: 500; margin-bottom: 6px;
+    .kontakt-img-col img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-    .address-col a {
-      display: block; margin-top: 6px; color: var(--orange);
-      text-decoration: none; font-weight: 500; font-size: .98rem;
-    }
-    .address-col a:hover { text-decoration: underline; }
-
-    /* ── NEWSLETTER ── */
-    .newsletter-strip {
-      background: var(--off); padding: 48px;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 32px; flex-wrap: wrap;
-      border-top: 1px solid var(--border);
-    }
-    .newsletter-strip p {
-      font-size: 1.05rem; font-weight: 400; color: var(--dark);
-    }
-    .newsletter-link {
-      display: inline-block; padding: 12px 28px; border: 1px solid var(--dark);
-      color: var(--dark); text-decoration: none; font-size: .78rem;
-      letter-spacing: .1em; text-transform: uppercase; font-weight: 500;
-      white-space: nowrap; transition: all .2s; flex-shrink: 0;
-    }
-    .newsletter-link:hover { background: var(--dark); color: #fff; }
-
-    /* ── LAGEPLAN ── */
-    .lageplan-section { padding: 72px 48px; background: #fff; }
-    .lageplan-section h2 {
-      font-family: 'Bebas Neue', sans-serif; font-size: 2rem;
-      margin-bottom: 28px; color: var(--dark);
-    }
-    .lageplan-img {
-      width: 100%; aspect-ratio: 1 / 1; max-width: 700px;
-      background: #e8e4de;
-      display: flex; align-items: center; justify-content: center;
-      font-size: .75rem; letter-spacing: .12em; text-transform: uppercase;
+    .kontakt-img-placeholder {
+      position: absolute;
+      inset: 0;
+      background: #e0dcd5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      text-transform: uppercase;
       color: #aaa;
     }
 
-    /* ── FOOTER ── */
-    footer { background: var(--purple-dark); padding: 36px 48px; }
-    .footer-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 24px;
+    /* Spalte 3: Adresse */
+    .kontakt-adresse-col {
+      background: rgba(var(--rosa), 1);
+      padding: 80px 40px 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
-    .footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .footer-logo .logo-text { font-size: .85rem; color: rgba(255,255,255,.6); }
-    .footer-links, .footer-legal { list-style: none; display: flex; gap: 20px; flex-wrap: wrap; }
-    .footer-links a, .footer-legal a {
-      color: rgba(255,255,255,.5); text-decoration: none; font-size: .8rem;
+    .kontakt-adresse-col .adresse-label {
+      font-size: 1.2rem;
+      color: rgba(var(--grün2), 1);
     }
-    .footer-links a:hover, .footer-legal a:hover { color: var(--orange); }
+    .kontakt-adresse-col address {
+      font-style: normal;
+      font-size: 1.2rem;
+      color: rgba(var(--grün2), 1);
+      line-height: 1.6;
+      font-weight: bold
+    }
+    .kontakt-adresse-col a {
+      font-size: 1.2rem;
+      color: rgba(var(--grün2), 1);
+      text-decoration: none;
+      line-height: 1.6;
+      font-weight: bold
+    }
+    .kontakt-adresse-col a:hover {
+      text-decoration: underline;
+    }
 
-    /* ── RESPONSIVE ── */
+    /* ── NEWSLETTER SECTION ── */
+    .newsletter-img-left {
+      position: relative;
+      overflow: hidden;
+    }
+    .newsletter-img-left img,
+    .newsletter-img-right img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .newsletter-img-placeholder {
+      position: absolute;
+      inset: 0;
+      background: #e0dcd5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      color: #aaa;
+    }
+    .newsletter-mitte {
+      background: rgba(var(--grün2), 1);
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .newsletter-mitte h2 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(2rem, 4vw, 4rem);
+      color: rgba(var(--rosa), 1);
+      text-transform: uppercase;
+      line-height: 1.0;
+      margin-bottom: 75px;
+    }
+    .newsletter-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 20px;
+      background: rgba(var(--rosa), 1);
+      color: rgba(var(--grün2), 1);
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 500;
+      transition: opacity .2s;
+      margin-bottom: 300px;
+    }
+    .newsletter-link:hover {
+      text-decoration: underline;
+    }
+    .newsletter-img-right {
+      position: relative;
+      overflow: hidden;
+    }
+
     @media (max-width: 900px) {
-      nav { padding: 14px 24px; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .page-intro { padding: 120px 24px 60px; }
-      .main-grid { grid-template-columns: 1fr; }
-      .form-col { padding: 48px 24px; border-right: none; border-bottom: 1px solid var(--border); }
-      .address-col { padding: 48px 24px; }
-      .newsletter-strip { padding: 36px 24px; }
-      .lageplan-section { padding: 48px 24px; }
-      footer { padding: 32px 24px; }
-      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .kontakt-wrapper { grid-template-columns: 1fr; }
+      .kontakt-seite, .newsletter-section { display: block; }
+      .kontakt-img-col { min-height: 50vh; }
+      .newsletter-img-left,
+      .newsletter-img-right { min-height: 40vh; position: relative; }
+    }
+
+
+    /* ── LAGEPLAN ── */
+    .lageplan-section {
+      background: rgba(var(--rosa), 0.25);
+      padding: 60px 48px;
+      display: block;
+      grid-template-columns: 1fr 2fr;
+      gap: 48px;
+      align-items: start;
+      min-height: 60vh;
+    }
+    .lageplan-titel h2 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(4rem, 8vw, 8rem);
+      color: rgba(var(--rosa), 1);
+      text-transform: uppercase;
+      line-height: .95;
+      margin-top: 50px;
+      margin-bottom: 15px;
+    }
+    .lageplan-img {
+      margin-left: 33%;
+      box-sizing: border-box;
+      padding-right: 40px;
+      margin-bottom: 150px;   
+    }
+    .lageplan-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .lageplan-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: rgba(255,255,255,.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(var(--lila), 1);
+    }
+
+    @media (max-width: 700px) {
+      .lageplan-section { grid-template-columns: 1fr; padding: 48px 24px; }
+    }
+
+
+    /* ── FOOTER NEU ── */
+    .footer-neu {
+      background-color: rgba(var(--rosa), 1);
+      padding: 80px 48px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-height: 100vh;
+      justify-content: space-between;
+    }
+    .footer-neu-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      margin-bottom: 60px;
+    }
+    .footer-neu-logo .logo-mark {
+      width: 52px;
+      height: 52px;
+      background: rgba(var(--grün2), 1);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .footer-neu-logo .logo-text {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.1rem;
+      color: var(--white);
+      letter-spacing: .07em;
+      line-height: 1.15;
+      text-align: left;
+    }
+    .footer-neu-nav {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: auto;
+    }
+    .footer-neu-nav a {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: .02em;
+      transition: color .2s;
+    }
+    .footer-neu-nav a:hover {
+      color: rgba(var(--grün2), 1);
+      text-decoration: underline;
+    }
+    .footer-neu-legal {
+      display: flex;
+      gap: 32px;
+      margin-top: 60px;
+    }
+    .footer-neu-legal a {
+      color: rgba(255,255,255,.6);
+      text-decoration: none;
+      font-size: .9rem;
+      transition: color .2s;
+    }
+    .footer-neu-legal a:hover {
+      color: var(--white);
+    }
+
+    @media (max-width: 600px) {
+      .footer-neu { padding: 60px 24px 40px; }
+      .footer-neu-nav a { font-size: 1.8rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
+
+<!-- ─── NAV ─── -->
 <nav id="navbar">
-  <a href="ehem-kohlenhofareal-grombühl.html" class="nav-logo">
+  <a href="index.html" class="nav-logo">
     <div class="logo-mark"></div>
-    <div class="logo-text">KREATIV<br>QUARTIER<br>POTSDAM</div>
+    <div class="logo-text">EHEM.<br>KOHLENHOF<br>GROMBÜHL</div>
   </a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="index.html">Startseite</a></li>
+    <li><a href="index.html">STARTSEITE</a></li>
     <li class="dropdown">
-      <a href="quartier.html">Quartier ▾</a>
-      <ul class="dropdown-menu">
-        <li><a href="quartier/frame.html">Frame</a></li>
-        <li><a href="quartier/pulse.html">Pulse</a></li>
-        <li><a href="quartier/leuchtturm.html">Leuchtturm</a></li>
-        <li><a href="quartier/deck.html">Deck</a></li>
-        <li><a href="quartier/forum.html">Forum</a></li>
-      </ul>
+      <a href="quartier.html">QUARTIER ▾</a>
+      <div class="dropdown-menu">
+        <a href="quartier/frame.html">FRAME</a>
+        <a href="quartier/pulse.html">PULSE</a>
+        <a href="quartier/leuchtturm.html">LEUCHTTURM</a>
+        <a href="quartier/deck.html">DECK</a>
+        <a href="quartier/forum.html">FORUM</a>
+      </div>
     </li>
-    <li><a href="kontakt.html" class="active">Kontakt</a></li>
+    <li><a href="kontakt.html">KONTAKT</a></li>
   </ul>
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- HERO / PAGE INTRO -->
-<div class="page-intro">
-  <h1>Kontakt</h1>
-  <p>Du hast Fragen oder möchtest etwas loswerden?<br>Wir freuen uns, auf eine Nachricht!</p>
+
+<!-- ─── KONTAT HEAD ─── -->
+<div class="kontakt-head-section">
+  <h1>DU HAST FRAGEN<br>
+      ODER MÖCHTEST<br>
+      ETWAS<br>
+      LOSWERDEN?<br><br>
+      WIR FREUEN<br>
+      UNS, AUF EINE<br>
+      NACHRICHT!
+  </h1>
 </div>
 
-<!-- MAIN: FORM + ADDRESS -->
-<div class="main-grid">
 
-  <!-- Kontaktformular -->
-  <div class="form-col">
-    <form id="contactForm">
-      <div class="form-group">
-        <label>Vorname</label>
-        <input type="text" placeholder="Max" />
-      </div>
-      <div class="form-group">
-        <label>Name</label>
-        <input type="text" placeholder="Mustermann" />
-      </div>
-      <div class="form-group">
-        <label>E-Mail</label>
-        <input type="email" placeholder="max@beispiel.de" />
-      </div>
-      <div class="form-group">
-        <label>Nachricht</label>
-        <textarea placeholder="Deine Nachricht ..."></textarea>
-      </div>
-      <p class="form-privacy">Mit dem Klick auf „Senden", wird zugestimmt, dass die GW Kreativquartier GmbH &amp; Co. KG die oben angegebenen persönlichen Daten speichert und verarbeitet, um die angeforderten Inhalte bereitzustellen.</p>
-      <button type="submit" class="btn-submit">Senden</button>
-    </form>
+<!-- ─── KONTAKT ─── -->
+<div class="kontakt-wrapper">
+
+  <div class="kontakt-seite">
+    <!-- Spalte 1: Formular -->
+    <div class="kontakt-form-col">
+      <form id="kontaktSeitenForm">
+        <div class="kf-group">
+          <label>Vorname <span class="required">*</span></label>
+          <input type="text" required />
+        </div>
+        <div class="kf-group">
+          <label>Name <span class="required">*</span></label>
+          <input type="text" required />
+        </div>
+        <div class="kf-group">
+          <label>E-Mail <span class="required">*</span></label>
+          <input type="email" required />
+        </div>
+        <div class="kf-group">
+          <label>Nachricht <span class="required">*</span></label>
+          <textarea required></textarea>
+        </div>
+        <div class="kontakt-privacy">
+          <input type="checkbox" required />
+          <span>Mit dem Klick auf „Senden", wird zugestimmt, dass die xxx die oben angegebenen persönlichen Daten speichert und verarbeitet, um die angeforderten Inhalte bereitzustellen.</span>
+        </div>
+        <div class="kf-group" style="margin-top:16px;">
+          <label class="kontakt-captcha-label" id="kontaktCaptchaLabel"></label>
+          <input type="text" id="kontaktCaptchaInput" required />
+        </div>
+        <button type="submit" class="kontakt-submit">Senden</button>
+      </form>
+    </div>
+
+    <!-- Spalte 2: Bild -->
+    <div class="kontakt-img-col">
+      <div class="kontakt-img-placeholder">Eigenes Bild einfügen</div>
+    </div>
+
+    <!-- Spalte 3: Adresse -->
+    <div class="kontakt-adresse-col">
+      <span class="adresse-label">Unsere Adresse</span>
+      <address>
+        Ehem. Kohlenhofareal Grombühl<br>
+        Grombühlstraße<br>
+        97080 Würzburg
+      </address>
+      <a href="mailto:info@ehem-kohlenhofareal-grombuehl.de">
+        info@ehem-kohlenhofareal-grombuehl.de
+      </a>
+    </div>
   </div>
 
-  <!-- Adresse -->
-  <div class="address-col">
-    <h2>Unsere Adresse</h2>
-    <address>
-      Kreativ Quartier Potsdam<br>
-      Neue Plantage<br>
-      14467 Potsdam
-    </address>
-    <a href="mailto:info@kreativ-quartier-potsdam.de">info@kreativ-quartier-potsdam.de</a>
+  <div class="newsletter-section">
+    <!-- Spalte 1: Bild -->
+    <div class="newsletter-img-left">
+      <div class="newsletter-img-placeholder">Eigenes Bild einfügen</div>
+    </div>
+
+    <!-- Spalte 2: Newsletter Text -->
+    <div class="newsletter-mitte">
+      <h2>Fomo<br>Adé!<br>Nichts<br>mehr<br>verpassen<br>mit<br>unseren<br>News.</h2>
+      <a href="newsletter.html" class="newsletter-link">
+        Hier zum Newsletter <br>anmelden ———→
+      </a>
+    </div>
+
+    <!-- Spalte 3: Bild -->
+    <div class="newsletter-img-right">
+      <div class="newsletter-img-placeholder">Eigenes Bild einfügen</div>
+    </div>
   </div>
 
 </div>
 
-<!-- NEWSLETTER -->
-<div class="newsletter-strip">
-  <p>FOMO adé! Nichts mehr verpassen mit unseren News.</p>
-  <a href="https://share-eu1.hsforms.com/132pqT9WJT3a6_jC-g56A9A2dw2k5" target="_blank" class="newsletter-link">Hier zum Newsletter anmelden</a>
-</div>
+<script>
+  // Captcha
+  let kontaktCaptchaAnswer = 0;
 
-<!-- LAGEPLAN -->
+  function generateKontaktCaptcha() {
+    const a = Math.floor(Math.random() * 9) + 1;
+    const b = Math.floor(Math.random() * 9) + 1;
+    kontaktCaptchaAnswer = a - b >= 0 ? a - b : a + b;
+    const op = a - b >= 0 ? '-' : '+';
+    document.getElementById('kontaktCaptchaLabel').textContent =
+      `${a} ${op} ${b} =`;
+  }
+  generateKontaktCaptcha();
+
+  document.getElementById('kontaktSeitenForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const input = document.getElementById('kontaktCaptchaInput');
+    if (parseInt(input.value) !== kontaktCaptchaAnswer) {
+      alert('Falsche Antwort, bitte nochmal versuchen.');
+      input.value = '';
+      generateKontaktCaptcha();
+      return;
+    }
+    const btn = e.target.querySelector('.kontakt-submit');
+    btn.textContent = 'Nachricht gesendet ✓';
+    btn.style.background = '#1f7a40';
+    setTimeout(() => {
+      btn.textContent = 'Senden';
+      btn.style.background = '';
+      e.target.reset();
+      generateKontaktCaptcha();
+    }, 3500);
+  });
+</script>
+
+
+<!-- ─── LAGEPLAN ─── -->
 <div class="lageplan-section">
-  <div class="lageplan-img">Eigenes Bild einfügen – Lageplan</div>
-  <h2 style="margin-top:20px;">Lageplan</h2>
+  <div class="lageplan-titel">
+    <h2>Lageplan</h2>
+  </div>
+  <div class="lageplan-img">
+    <!-- Bild einfügen: <img src="bilder/lageplan.jpg" alt="Lageplan" /> -->
+    <div class="lageplan-placeholder">Eigenes Bild einfügen – Lageplan</div>
+  </div>
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <a href="kreativ-quartier-potsdam.html" class="footer-logo">
-      <div class="logo-mark"></div>
-      <div class="logo-text">KREATIV<br>QUARTIER<br>POTSDAM</div>
-    </a>
-    <ul class="footer-links">
-      <li><a href="quartier/langer-stall.html">Langer Stall</a></li>
-      <li><a href="quartier/rack.html">Rack</a></li>
-      <li><a href="quartier/orangerie.html">Orangerie</a></li>
-      <li><a href="quartier/laterne.html">Laterne</a></li>
-      <li><a href="quartier/akademie.html">Akademie</a></li>
-      <li><a href="quartier/townhouse.html">Townhouse</a></li>
-      <li><a href="quartier/musikhaus.html">Musikhaus</a></li>
-    </ul>
-    <ul class="footer-legal">
-      <li><a href="#">Impressum</a></li>
-      <li><a href="#">Datenschutz</a></li>
-    </ul>
+
+<!-- ─── FOOTER NEU ─── -->
+<footer class="footer-neu">
+  <a href="ehem-kohlenhofareal-grombühl.html" class="footer-neu-logo">
+    <div class="logo-mark"></div>
+    <div class="logo-text">EHEM.<br>KOHLENHOF<br>GROMBÜHL</div>
+  </a>
+
+  <ul class="footer-neu-nav">
+    <li><a href="quartier/frame.html">FRAME</a></li>
+    <li><a href="quartier/pulse.html">PULSE</a></li>
+    <li><a href="quartier/leuchtturm.html">LEUCHTTURM</a></li>
+    <li><a href="quartier/deck.html">DECK</a></li>
+    <li><a href="quartier/forum.html">FORUM</a></li>
+  </ul>
+
+  <div class="footer-neu-legal">
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
   </div>
 </footer>
 
@@ -297,32 +702,66 @@
   // Sticky nav
   const nav = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 50);
+    nav.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // Hamburger
+  // Scroll-reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.13 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+  // Mobile nav
   const hamburger = document.getElementById('hamburger');
   const links = document.getElementById('navLinks');
   let open = false;
   hamburger.addEventListener('click', () => {
     open = !open;
-    links.style.cssText = open
-      ? 'display:flex;flex-direction:column;position:fixed;inset:0;background:rgba(26,0,50,.97);align-items:center;justify-content:center;gap:24px;z-index:99;padding:40px;'
-      : '';
+    if (open) {
+      links.style.cssText = `
+        display:flex; flex-direction:column; position:fixed; inset:0;
+        background:rgba(26,0,50,.97); align-items:center; justify-content:center;
+        gap:28px; z-index:99; padding:40px;
+      `;
+    } else {
+      links.style.cssText = '';
+    }
   });
 
-  // Form submit
-  const form = document.getElementById('contactForm');
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const btn = form.querySelector('.btn-submit');
-    btn.textContent = 'Nachricht gesendet ✓';
-    btn.style.background = '#1f7a40';
+// Slideshow
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+
+  // Erstes Bild sofort sichtbar
+  slides[0].classList.add('active');
+
+  setInterval(() => {
+    const next = (current + 1) % slides.length;
+
+    // Nächstes Bild von rechts bereitstellen
+    slides[next].style.transform = 'translateX(100%)';
+    slides[next].style.transition = 'none';
+    slides[next].classList.add('active');
+
+    // Kurz warten dann beide animieren
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        slides[next].style.transition = 'transform .8s ease-in-out';
+        slides[next].style.transform = 'translateX(0%)';
+        slides[current].style.transition = 'transform .8s ease-in-out';
+        slides[current].style.transform = 'translateX(-100%)';
+      });
+    });
+
+    // Altes Bild nach Animation aufräumen
     setTimeout(() => {
-      btn.textContent = 'Senden';
-      btn.style.background = '';
-    }, 3500);
-  });
+      slides[current].classList.remove('active');
+      slides[current].style.transform = 'translateX(100%)';
+      slides[current].style.transition = 'none';
+      current = next;
+    }, 850);
+
+  }, 5000);
 </script>
 </body>
 </html>
